@@ -1,0 +1,48 @@
+# --- PLEASE EDIT THE LINES BELOW CORRECTLY ---
+# SOME DESCRIPTIVE TITLE.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2008-11-23 17:02+0000\n"
+"PO-Revision-Date: 2008-11-23 18:35+0200\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"Language-Code: da\n"
+"Language-Name: Danish\n"
+"Preferred-Encodings: utf-8 latin1\n"
+"Domain: plone.app.changeownership\n"
+
+msgid "You have to select one or more from the old owners."
+msgstr ""
+
+msgid "You have to select a new owner."
+msgstr ""
+
+msgid "Objects updated"
+msgstr ""
+
+msgid "This form will help you to pass ownership of objects owned by old users to a new user."
+msgstr ""
+
+msgid "The old owners:"
+msgstr ""
+
+msgid "The new owner:"
+msgstr ""
+
+msgid "Remove old owners from the creators list"
+msgstr ""
+
+msgid "Remove the 'owner role' for the old owners"
+msgstr ""
+
+msgid "Exclude members folder"
+msgstr ""
+
+msgid "Change Ownership"
+msgstr ""

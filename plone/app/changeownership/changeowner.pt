@@ -1,0 +1,82 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      lang="en"
+      metal:use-macro="here/prefs_main_template/macros/master"
+      i18n:domain="plone.app.changeownership">
+
+<metal:block fill-slot="top_slot"
+             tal:define="dummy python:request.set('disable_border',1)" />
+
+<body>
+
+<div metal:fill-slot="prefs_configlet_content">
+
+  <dl class="portalMessage"
+      tal:condition="view/status">
+    <tal:repeat repeat="msg view/status">
+      <dt>Info</dt>
+      <dd tal:content="msg">Message</dd>
+    </tal:repeat>
+  </dl>
+
+  <h1 class="documentFirstHeading" i18n:translate="">
+      This form will help you to pass ownership of objects owned by old users to a new user.
+  </h1>
+    
+  <form action="./change-owner" method="post">
+    <div class="field">
+       <label for="oldowners" i18n:translate="">The old owners:</label><br/>
+       <select name="oldowners" MULTIPLE>
+         <tal:loop tal:repeat="author view/list_authors">
+          <option tal:content="author/name" tal:attributes="value author/id">author</option>
+         </tal:loop> 
+       </select>
+
+    </div>  
+    
+    <div class="field">
+       <label for="newowner" i18n:translate="">The new owner:</label><br/>
+       <select name="newowner">
+         <tal:loop tal:repeat="member view/list_members">
+          <option tal:content="member/name" tal:attributes="value member/id">member</option>
+         </tal:loop> 
+       </select>
+    </div>
+
+    <div class="field">
+       <input type="checkbox" 
+              name="delete_old_creators:boolean" 
+              tal:attributes="checked view/delete_old_creators" />
+       <label for="delete_old_creators" i18n:translate="">Remove old owners from the creators list</label><br/>
+    </div>
+
+    <div class="field">
+       <input type="checkbox" 
+              name="delete_old_owners:boolean" 
+              tal:attributes="checked view/delete_old_owners" />
+       <label for="delete_old_owners" i18n:translate="">Remove the 'owner role' for the old owners</label><br/>
+    </div>
+
+    <div class="field">
+       <input type="checkbox" 
+              name="exclude_members_folder:boolean" 
+              tal:attributes="checked view/exclude_members_folder" />
+       <label for="exclude_members_folder" i18n:translate="">Exclude members folder</label><br/>
+    </div>
+
+
+    <input type="submit" 
+           name="submit" 
+           value="Change Ownership"
+	       class="submit-button"
+	       i18n:attributes="value"
+	   />
+    
+  </form>
+
+</div>
+
+</body>
+</html>

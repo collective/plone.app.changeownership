@@ -27,10 +27,15 @@
     
   <form action="./change-owner" method="post">
     <div class="field">
+      <label for="path" i18n:translate="">Path filter</label><br />
+      <input type="text" name="path" tal:attributes="value view/path_filter" />
+    </div>
+
+    <div class="field">
        <label for="oldowners" i18n:translate="">The old owners:</label><br/>
        <select name="oldowners" MULTIPLE>
          <tal:loop tal:repeat="author view/list_authors">
-          <option tal:content="author/name" tal:attributes="value author/id">author</option>
+          <option tal:content="author/name" tal:attributes="value author/id; selected author/selected">author</option>
          </tal:loop> 
        </select>
 
@@ -40,7 +45,7 @@
        <label for="newowner" i18n:translate="">The new owner:</label><br/>
        <select name="newowner">
          <tal:loop tal:repeat="member view/list_members">
-          <option tal:content="member/name" tal:attributes="value member/id">member</option>
+          <option tal:content="member/name" tal:attributes="value member/id; selected member/selected">member</option>
          </tal:loop> 
        </select>
     </div>
@@ -66,6 +71,12 @@
        <label for="exclude_members_folder" i18n:translate="">Exclude members folder</label><br/>
     </div>
 
+    <div class="field">
+       <input type="checkbox" 
+              name="dry_run:boolean" 
+              tal:attributes="checked view/dry_run" />
+       <label for="dry_run" i18n:translate="">Perform as Dry Run</label><br/>
+    </div>
 
     <input type="submit" 
            name="submit" 

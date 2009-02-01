@@ -1,8 +1,14 @@
 Changelog
 =========
 
-0.1 - Unreleased
+0.1 (2008-02-01)
 ----------------
+
+* Merged matth's branch that adds:
+  - Filter by path
+  - Dry run option
+  - Sorting of usernames
+  - Display userid as well as full name
 
 * Initial release
 

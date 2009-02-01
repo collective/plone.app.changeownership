@@ -31,6 +31,9 @@ class ChangeOwner(BrowserView):
         """Do we have to exclude the members folder ? """
         return self.request.form.get('exclude_members_folder', True)
 
+    def dry_run(self):
+        """Do we have to do a dry run ? """
+        return self.request.form.get('dry_run', True)
 
     def delete_old_creators(self):
         """Do we have to delete old owners from the creators list ? """
@@ -41,27 +44,43 @@ class ChangeOwner(BrowserView):
         """Do we have to delete old owners from the owners role list ? """
         return self.request.form.get('delete_old_owners', False)
 
+    def path_filter(self):
+        """Do we have an old path?"""
+        return self.request.form.get('path', '')
 
     def list_authors(self):
         """Returns a list of members that have created objects 
         """
         authors = []
+        oldowners = self.request.form.get('oldowners', [])
          
         for creator in self.catalog.uniqueValuesFor('Creator'):
+            if not creator:
+              continue
+
             info = self.membership.getMemberInfo(creator)
             if info and info['fullname']:
-                authors.append(dict(id=creator, name=info['fullname']))
+                d = dict(id=creator, name="%s (%s)" % (info['fullname'], creator))
             else:         
-                authors.append(dict(id=creator, name=creator))
+                d = dict(id=creator, name=creator)
+
+            if creator in oldowners:
+                d['selected'] = 1
+            else:
+                d['selected'] = 0
+            authors.append(d)
                  
+        authors.sort(lambda a,b: cmp(str(a['name']).lower(), str(b['name']).lower()))
         return authors
-        
+
                 
     @memoize                     
     def list_members(self):
         """Returns the list of all plone members
         """
         members = []
+        newowner = self.request.form.get('newowner', '')
+
         # plone members
         pas_search = getMultiAdapter((self.context, self.request), name=u'pas_search')
         users = list(pas_search.searchUsers())
@@ -71,10 +90,16 @@ class ChangeOwner(BrowserView):
         for user in users:
             info = self.membership.getMemberInfo(user['userid'])
             if info and info['fullname']:
-                members.append(dict(id=user['userid'], name=info['fullname']))
+                d = dict(id=user['userid'], name="%s (%s)" % (info['fullname'], user['userid']))
             else:         
-                members.append(dict(id=user['userid'], name=user['userid']))
-        
+                d = dict(id=user['userid'], name=user['userid'])
+            if user['userid'] == newowner:
+                d['selected'] = 1
+            else:
+                d['selected'] = 0
+            members.append(d)        
+
+        members.sort(lambda a,b: cmp(str(a['name']).lower(), str(b['name']).lower()))
         return members
 
 
@@ -82,6 +107,9 @@ class ChangeOwner(BrowserView):
          
          old_owners = self.request.form.get('oldowners', [])
          new_owner  = self.request.form.get('newowner', '')
+         path = self.request.form.get('path', '')
+         dryrun = self.request.form.get('dry_run', '')
+         ret = ''
 
          self.status = []
          if 'submit' in self.request.form:    
@@ -103,6 +131,9 @@ class ChangeOwner(BrowserView):
 
              members_folder_path = '/'.join(self.membership.getMembersFolder().getPhysicalPath())               
              query = {'Creator': old_owners}
+             if path:
+               query['path'] = self.context.portal_url.getPortalObject().getId() + path
+             
              count = 0
              for brain in self.catalog(**query): 
                  if self.exclude_members_folder() and \
@@ -111,14 +142,19 @@ class ChangeOwner(BrowserView):
                      #and its contents
                      continue
                      
-                 obj = brain.getObject()        
-                 self._change_ownership(obj, new_owner, old_owners)                 
-                 if base_hasattr(obj, 'reindexObject'):
-                     obj.reindexObject()
+                 if not dryrun:
+                   obj = brain.getObject()        
+                   self._change_ownership(obj, new_owner, old_owners)                 
+                   if base_hasattr(obj, 'reindexObject'):
+                       obj.reindexObject()
+                 else:
+                   ret += "%s " % brain.getPath()
                      
                  count += 1
                   
              self.status.append(self.objects_updated_message + " (%s)" % count)
+             if ret:
+               self.status.append(ret)
                  
          return self.template()
 

@@ -129,14 +129,17 @@ class ChangeOwner(BrowserView):
              #clean up
              old_owners = [c for c in old_owners if c != new_owner]
 
-             members_folder_path = '/'.join(self.membership.getMembersFolder().getPhysicalPath())               
+             members_folder = self.membership.getMembersFolder()
+             members_folder_path = None
+             if members_folder:
+                 members_folder_path = '/'.join(self.membership.getMembersFolder().getPhysicalPath())               
              query = {'Creator': old_owners}
              if path:
                query['path'] = self.context.portal_url.getPortalObject().getId() + path
              
              count = 0
              for brain in self.catalog(**query): 
-                 if self.exclude_members_folder() and \
+                 if self.exclude_members_folder() and members_folder_path and \
                     brain.getPath().startswith(members_folder_path):
                      #we dont want to change ownership for the members folder
                      #and its contents

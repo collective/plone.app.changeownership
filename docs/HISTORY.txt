@@ -1,6 +1,10 @@
 Changelog
 =========
 
+0.2 (unreleased)
+----------------
+* Added check for membersfolder [jaroel]
+
 0.1 (2008-02-01)
 ----------------
 
@@ -11,4 +15,3 @@ Changelog
   - Display userid as well as full name
 
 * Initial release
-

@@ -1,9 +1,9 @@
 Changelog
 =========
 
-0.2 (unreleased)
+0.2 (2010-02-02)
 ----------------
-* Added check for membersfolder [jaroel]
+* Added check to support instances without a membersfolder [jaroel]
 
 0.1 (2008-02-01)
 ----------------

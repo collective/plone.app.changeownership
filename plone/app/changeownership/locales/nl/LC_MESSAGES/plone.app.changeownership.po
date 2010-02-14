@@ -1,0 +1,49 @@
+# --- PLEASE EDIT THE LINES BELOW CORRECTLY ---
+# SOME DESCRIPTIVE TITLE.
+# UGent Portaalteam <portaal@ugent.be>, 2010.
+msgid ""
+msgstr ""
+"Project-Id-Version: plone.app.changeownership\n"
+"POT-Creation-Date: 2010-02-14 13:36+0000\n"
+"PO-Revision-Date: 2010-02-14 13:35+0000\n"
+"Last-Translator: UGent Portaalteam <portaal@ugent.be>\n"
+"Language-Team: UGent Portaalteam <portaal@ugent.be>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"Language-Code: nl\n"
+"Language-Name: Dutch\n"
+"Preferred-Encodings: utf-8 latin1\n"
+"Domain: plone.app.changeownership\n"
+
+
+msgid "You have to select one or more from the old owners."
+msgstr "Je moet één of meerdere oude eigenaars selecteren."
+
+msgid "You have to select a new owner."
+msgstr "Je moet een nieuwe eigenaar selecteren."
+
+msgid "Objects updated"
+msgstr "Objecten geupdate"
+
+msgid "This form will help you to pass ownership of objects owned by old users to a new user."
+msgstr "Dit formulier helpt je om het eigenaarschap van objecten te veranderen naar een nieuwe eigenaar."
+
+msgid "The old owners:"
+msgstr "De oude eigenaars:"
+
+msgid "The new owner:"
+msgstr "De nieuwe eigenaar:"
+
+msgid "Remove old owners from the creators list"
+msgstr "Verwijder de oude eigenaar van de creators-lijst"
+
+msgid "Remove the 'owner role' for the old owners"
+msgstr "Verwijder de 'owner'-rol voor de oude eigenaar"
+
+msgid "Exclude members folder"
+msgstr "Uitsluiten van de gebruikers-folder"
+
+msgid "Change Ownership"
+msgstr "Verander Eigendom"

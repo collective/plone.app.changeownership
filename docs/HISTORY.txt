@@ -3,9 +3,7 @@ Changelog
 
 0.3 (unreleased)
 ----------------
-
-- Nothing changed yet.
-
+* Added Dutch-translation [WouterVH]
 
 0.2 (2010-02-02)
 ----------------

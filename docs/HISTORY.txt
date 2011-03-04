@@ -3,10 +3,10 @@ Changelog
 
 0.3 (unreleased)
 ----------------
+
 - Added MANIFEST.in [WouterVH]
-
 - Added Dutch-translation [WouterVH]
-
+- Added z3c.autoinclude support [keul]
 
 0.2 (2010-02-02)
 ----------------

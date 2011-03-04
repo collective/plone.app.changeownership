@@ -7,12 +7,12 @@ Changelog
 - Added MANIFEST.in [WouterVH]
 - Added Dutch-translation [WouterVH]
 - Added z3c.autoinclude support [keul]
+- Added italian translation [keul]
 
 0.2 (2010-02-02)
 ----------------
 
 - Added check to support instances without a membersfolder [jaroel]
-
 
 0.1 (2008-02-01)
 ----------------

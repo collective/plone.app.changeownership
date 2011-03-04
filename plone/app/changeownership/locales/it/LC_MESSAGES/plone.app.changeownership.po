@@ -1,19 +1,18 @@
-# --- PLEASE EDIT THE LINES BELOW CORRECTLY ---
-# SOME DESCRIPTIVE TITLE.
-# UGent Portaalteam <portaal@ugent.be>, 2010.
+# Italian translation
+# keul <keul@redturtle.net>, 2011
 msgid ""
 msgstr ""
-"Project-Id-Version: plone.app.changeownership\n"
+"Project-Id-Version: PACKAGE VERSION\n"
 "POT-Creation-Date: 2011-03-04 16:38+0000\n"
-"PO-Revision-Date: 2010-02-14 13:35+0000\n"
-"Last-Translator: UGent Portaalteam <portaal@ugent.be>\n"
-"Language-Team: UGent Portaalteam <portaal@ugent.be>\n"
+"PO-Revision-Date: 2008-11-23 18:35+0200\n"
+"Last-Translator: Luca Fabbri <keul@redturtle.net>\n"
+"Language-Team: RedTurtle Technology <sviluppoplone@redturtle.net>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0\n"
-"Language-Code: nl\n"
-"Language-Name: Dutch\n"
+"Language-Code: it\n"
+"Language-Name: Italian\n"
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: plone.app.changeownership\n"
 
@@ -21,49 +20,49 @@ msgstr ""
 #: ./profiles/default/actionicons.xml
 #: ./profiles/default/controlpanel.xml
 msgid "Change Ownership"
-msgstr "Verander Eigendom"
+msgstr "Cambio Proprietario"
 
 #: ./changeowner.pt:71
 msgid "Exclude members folder"
-msgstr "Uitsluiten van de gebruikers-folder"
+msgstr "Escludi cartelle utenti"
 
 #: ./change_owner.py:18
 msgid "Objects updated"
-msgstr "Objecten geupdate"
+msgstr "Oggetti aggiornati"
 
 #: ./changeowner.pt:30
 msgid "Path filter"
-msgstr ""
+msgstr "Filtro sul percorso"
 
 #: ./changeowner.pt:78
 msgid "Perform as Dry Run"
-msgstr ""
+msgstr "Esegui come prova"
 
 #: ./changeowner.pt:57
 msgid "Remove old owners from the creators list"
-msgstr "Verwijder de oude eigenaar van de creators-lijst"
+msgstr "Rimuovi vecchi possessori dalla lista dei creatori"
 
 #: ./changeowner.pt:64
 msgid "Remove the 'owner role' for the old owners"
-msgstr "Verwijder de 'owner'-rol voor de oude eigenaar"
+msgstr "Rimuovi il 'ruolo possessore' dai vecchi possessori"
 
 #: ./changeowner.pt:45
 msgid "The new owner:"
-msgstr "De nieuwe eigenaar:"
+msgstr "Il nuovo possessore:"
 
 #: ./changeowner.pt:35
 msgid "The old owners:"
-msgstr "De oude eigenaars:"
+msgstr "I vecchi possessori:"
 
 #: ./changeowner.pt:24
 msgid "This form will help you to pass ownership of objects owned by old users to a new user."
-msgstr "Dit formulier helpt je om het eigenaarschap van objecten te veranderen naar een nieuwe eigenaar."
+msgstr "Questo modulo ti aiuterà a passare la proprietà di contenuti creati da vecchi utenti ad un nuovo utente"
 
 #: ./change_owner.py:17
 msgid "You have to select a new owner."
-msgstr "Je moet een nieuwe eigenaar selecteren."
+msgstr "Devi selezionare un nuovo utente."
 
 #: ./change_owner.py:16
 msgid "You have to select one or more from the old owners."
-msgstr "Je moet één of meerdere oude eigenaars selecteren."
+msgstr "Devi selezionare uno o più vecchi utenti."
 

@@ -15,7 +15,8 @@ Solution
 ========
 
 plone.app.changeownership makes easy to transfer ownership from one ore more 
-members to a new member.
+members to a new member. It also can change content metadata, like *Creators*
+field.
 
 
 Install

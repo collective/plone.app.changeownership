@@ -1,0 +1,69 @@
+# --- PLEASE EDIT THE LINES BELOW CORRECTLY ---
+# SOME DESCRIPTIVE TITLE.
+# UGent Portaalteam <portaal@ugent.be>, 2010.
+msgid ""
+msgstr ""
+"Project-Id-Version: plone.app.changeownership\n"
+"POT-Creation-Date: 2011-03-04 16:38+0000\n"
+"PO-Revision-Date: 2011-07-20 14:29+0800\n"
+"Last-Translator: Jian Aijun <jianaijun@gmail.com>\n"
+"Language-Team: UGent Portaalteam <portaal@ugent.be>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"Language-Code: nl\n"
+"Language-Name: Dutch\n"
+"Preferred-Encodings: utf-8 latin1\n"
+"Domain: plone.app.changeownership\n"
+
+#: ./changeowner.pt:81
+#: ./profiles/default/actionicons.xml
+#: ./profiles/default/controlpanel.xml
+msgid "Change Ownership"
+msgstr "变更改所有权"
+
+#: ./changeowner.pt:71
+msgid "Exclude members folder"
+msgstr "排除 成员文件夹"
+
+#: ./change_owner.py:18
+msgid "Objects updated"
+msgstr "对象已更新"
+
+#: ./changeowner.pt:30
+msgid "Path filter"
+msgstr "路径筛选器"
+
+#: ./changeowner.pt:78
+msgid "Perform as Dry Run"
+msgstr "模拟执行"
+
+#: ./changeowner.pt:57
+msgid "Remove old owners from the creators list"
+msgstr "从创建者名单中删除老的所有者"
+
+#: ./changeowner.pt:64
+msgid "Remove the 'owner role' for the old owners"
+msgstr "移除 老的所有者的 '所有者角色' "
+
+#: ./changeowner.pt:45
+msgid "The new owner:"
+msgstr "新的所有者:"
+
+#: ./changeowner.pt:35
+msgid "The old owners:"
+msgstr "老的所有者:"
+
+#: ./changeowner.pt:24
+msgid "This form will help you to pass ownership of objects owned by old users to a new user."
+msgstr "这个表单将帮助您变更对象的所有权，从老用户到一个新的用户。"
+
+#: ./change_owner.py:17
+msgid "You have to select a new owner."
+msgstr "你必须选择一个新的所有者。"
+
+#: ./change_owner.py:16
+msgid "You have to select one or more from the old owners."
+msgstr "你必须选择一个或多个的老的所有者。"
+

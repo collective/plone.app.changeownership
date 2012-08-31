@@ -1,6 +1,11 @@
 Changelog
 =========
 
+0.4 (unreleased)
+----------------
+
+- Fix permissions for Plone 4 [fdelia]
+
 0.3 (2011-03-07)
 ----------------
 

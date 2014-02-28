@@ -1,12 +1,12 @@
 # Italian translation
-# keul <keul@redturtle.net>, 2011
+# keul <keul@redturtle.it>, 2011
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "POT-Creation-Date: 2011-03-04 16:38+0000\n"
 "PO-Revision-Date: 2008-11-23 18:35+0200\n"
-"Last-Translator: Luca Fabbri <keul@redturtle.net>\n"
-"Language-Team: RedTurtle Technology <sviluppoplone@redturtle.net>\n"
+"Last-Translator: Luca Fabbri <keul@redturtle.it>\n"
+"Language-Team: RedTurtle Technology <sviluppoplone@redturtle.it>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -15,6 +15,7 @@ msgstr ""
 "Language-Name: Italian\n"
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: plone.app.changeownership\n"
+"X-Is-Fallback-For: it-ch it-it\n"
 
 #: ./changeowner.pt:81
 #: ./profiles/default/actionicons.xml

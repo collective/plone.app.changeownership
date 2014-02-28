@@ -18,9 +18,11 @@
     </tal:repeat>
   </dl>
 
-  <h1 class="documentFirstHeading" i18n:translate="">
+  <h1 class="documentFirstHeading" i18n:translate="">Change Ownership</h1>
+
+  <div class="documentDescription" i18n:translate="">
       This form will help you to pass ownership of objects owned by old users to a new user.
-  </h1>
+  </div>
     
   <form action="./change-owner" method="post">
     <div class="field">

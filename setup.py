@@ -3,6 +3,8 @@ import os
 
 version = '0.5.dev0'
 
+tests_require = ['plone.app.testing', ]
+
 setup(name='plone.app.changeownership',
       version=version,
       description="Change Plone objects ownership",
@@ -28,6 +30,8 @@ setup(name='plone.app.changeownership',
       namespace_packages=['plone', 'plone.app'],
       include_package_data=True,
       zip_safe=False,
+      tests_require=tests_require,
+      extras_require=dict(test=tests_require),
       install_requires=[
           'setuptools',
           # -*- Extra requirements: -*-

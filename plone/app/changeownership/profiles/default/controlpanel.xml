@@ -13,7 +13,7 @@
     visible="True"
 	icon_expr="string:${portal_url}/group.png"
 	i18n:attributes="title">
-  <permission>Manage portal</permission>
+  <permission>plone.app.changeownership: Manage Ownership</permission>
  </configlet>
 
 </object>

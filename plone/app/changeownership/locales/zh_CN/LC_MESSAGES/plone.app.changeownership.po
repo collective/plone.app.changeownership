@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: plone.app.changeownership\n"
-"POT-Creation-Date: 2011-03-04 16:38+0000\n"
+"POT-Creation-Date: 2014-02-28 17:04+0000\n"
 "PO-Revision-Date: 2011-07-20 14:29+0800\n"
 "Last-Translator: Jian Aijun <jianaijun@gmail.com>\n"
 "Language-Team: UGent Portaalteam <portaal@ugent.be>\n"
@@ -17,13 +17,15 @@ msgstr ""
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: plone.app.changeownership\n"
 
-#: ./changeowner.pt:81
-#: ./profiles/default/actionicons.xml
+msgid "Add a new form in your control panel to help you change ownership of contents"
+msgstr ""
+
+#: ./changeowner.pt:21
 #: ./profiles/default/controlpanel.xml
 msgid "Change Ownership"
 msgstr "变更改所有权"
 
-#: ./changeowner.pt:71
+#: ./changeowner.pt:70
 msgid "Exclude members folder"
 msgstr "排除 成员文件夹"
 
@@ -31,31 +33,31 @@ msgstr "排除 成员文件夹"
 msgid "Objects updated"
 msgstr "对象已更新"
 
-#: ./changeowner.pt:30
+#: ./changeowner.pt:29
 msgid "Path filter"
 msgstr "路径筛选器"
 
-#: ./changeowner.pt:78
+#: ./changeowner.pt:77
 msgid "Perform as Dry Run"
 msgstr "模拟执行"
 
-#: ./changeowner.pt:57
+#: ./changeowner.pt:56
 msgid "Remove old owners from the creators list"
 msgstr "从创建者名单中删除老的所有者"
 
-#: ./changeowner.pt:64
+#: ./changeowner.pt:63
 msgid "Remove the 'owner role' for the old owners"
 msgstr "移除 老的所有者的 '所有者角色' "
 
-#: ./changeowner.pt:45
+#: ./changeowner.pt:44
 msgid "The new owner:"
 msgstr "新的所有者:"
 
-#: ./changeowner.pt:35
+#: ./changeowner.pt:34
 msgid "The old owners:"
 msgstr "老的所有者:"
 
-#: ./changeowner.pt:24
+#: ./changeowner.pt:23
 msgid "This form will help you to pass ownership of objects owned by old users to a new user."
 msgstr "这个表单将帮助您变更对象的所有权，从老用户到一个新的用户。"
 

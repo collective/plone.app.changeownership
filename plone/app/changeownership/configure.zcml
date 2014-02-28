@@ -12,11 +12,16 @@
   
   <include package="Products.CMFCore" />
 
+  <permission
+      id="plone.app.changeownership.ManageOwnership"
+      title="plone.app.changeownership: Manage Ownership"
+      />
+
   <genericsetup:registerProfile
      name="default"
      title="plone.app.changeownership"
      directory="profiles/default"
-     description=""
+     description="Add a new form in your control panel to help you change ownership of contents"
      provides="Products.GenericSetup.interfaces.EXTENSION" />
 
   <genericsetup:registerProfile
@@ -25,13 +30,23 @@
      directory="profiles/uninstall"
      description="Remove plone.app.changeownership"
      provides="Products.GenericSetup.interfaces.EXTENSION" />
- 
+
+  <genericsetup:upgradeStep
+     title="Upgrade version 0.5"
+     description="Upgrade plone.app.changeownership to version 0.5"
+     source="*"
+     destination="1000"
+     handler=".setuphandlers.migrateTo1000"
+     sortkey="1"
+     profile="plone.app.changeownership:default"
+     />
+
   <browser:page
      for="*"
      name="change-owner"
      class=".change_owner.ChangeOwner"
      attribute="change_owner"
-     permission="cmf.ManagePortal"
+     permission="plone.app.changeownership.ManageOwnership"
      />
     
 </configure>

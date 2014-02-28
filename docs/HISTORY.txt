@@ -4,8 +4,9 @@ Changelog
 0.5 (unreleased)
 ----------------
 
-- Nothing changed yet.
-
+- Minor changes to ownership form [keul]
+- Support for Site Administrator role with a proper permissions [keul]
+- Added uninstall profile
 
 0.4 (2012-09-20)
 ----------------

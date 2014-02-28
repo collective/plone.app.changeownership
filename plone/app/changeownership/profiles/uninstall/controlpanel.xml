@@ -8,7 +8,7 @@
     appId="plone.app.changeownership"
 	category="Products"
     remove="True">
-  <permission>Manage portal</permission>
+  <permission>plone.app.changeownership: Manage Ownership</permission>
  </configlet>
 
 </object>

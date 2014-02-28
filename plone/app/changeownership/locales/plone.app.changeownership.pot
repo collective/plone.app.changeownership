@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2011-03-04 16:38+0000\n"
+"POT-Creation-Date: 2014-02-28 17:04+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,13 +17,15 @@ msgstr ""
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: plone.app.changeownership\n"
 
-#: ./changeowner.pt:81
-#: ./profiles/default/actionicons.xml
+msgid "Add a new form in your control panel to help you change ownership of contents"
+msgstr ""
+
+#: ./changeowner.pt:21
 #: ./profiles/default/controlpanel.xml
 msgid "Change Ownership"
 msgstr ""
 
-#: ./changeowner.pt:71
+#: ./changeowner.pt:70
 msgid "Exclude members folder"
 msgstr ""
 
@@ -31,31 +33,31 @@ msgstr ""
 msgid "Objects updated"
 msgstr ""
 
-#: ./changeowner.pt:30
+#: ./changeowner.pt:29
 msgid "Path filter"
 msgstr ""
 
-#: ./changeowner.pt:78
+#: ./changeowner.pt:77
 msgid "Perform as Dry Run"
 msgstr ""
 
-#: ./changeowner.pt:57
+#: ./changeowner.pt:56
 msgid "Remove old owners from the creators list"
 msgstr ""
 
-#: ./changeowner.pt:64
+#: ./changeowner.pt:63
 msgid "Remove the 'owner role' for the old owners"
 msgstr ""
 
-#: ./changeowner.pt:45
+#: ./changeowner.pt:44
 msgid "The new owner:"
 msgstr ""
 
-#: ./changeowner.pt:35
+#: ./changeowner.pt:34
 msgid "The old owners:"
 msgstr ""
 
-#: ./changeowner.pt:24
+#: ./changeowner.pt:23
 msgid "This form will help you to pass ownership of objects owned by old users to a new user."
 msgstr ""
 

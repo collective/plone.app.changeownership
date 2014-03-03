@@ -26,7 +26,11 @@
     
   <form action="./change-owner" method="post">
     <div class="field">
-      <label for="path" i18n:translate="">Path filter</label><br />
+      <label for="path" i18n:translate="">Path filter</label>
+      <div class="formHelp" i18n:translate="path_help">
+          Insert an absolute path starting from the portal root (for example: &quot;/events&quot;).
+        Only contents inside this subtree will be touched.
+      </div>
       <input type="text" name="path" id="path" size="50" tal:attributes="value view/path_filter" />
     </div>
 

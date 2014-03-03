@@ -3,7 +3,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2014-02-28 17:04+0000\n"
+"POT-Creation-Date: 2014-03-03 10:16+0000\n"
 "PO-Revision-Date: 2008-11-23 18:35+0200\n"
 "Last-Translator: Luca Fabbri <keul@redturtle.it>\n"
 "Language-Team: RedTurtle Technology <sviluppoplone@redturtle.it>\n"
@@ -25,7 +25,7 @@ msgstr "Aggiunge un nuovo modulo nel pannello di controllo per aiutare nel cambi
 msgid "Change Ownership"
 msgstr "Cambio Proprietario"
 
-#: ./changeowner.pt:70
+#: ./changeowner.pt:77
 msgid "Exclude members folder"
 msgstr "Escludi cartelle utenti"
 
@@ -37,23 +37,23 @@ msgstr "Oggetti aggiornati"
 msgid "Path filter"
 msgstr "Filtro sul percorso"
 
-#: ./changeowner.pt:77
+#: ./changeowner.pt:85
 msgid "Perform as Dry Run"
-msgstr "Esegui come prova"
+msgstr "Esegui come simulazione"
 
-#: ./changeowner.pt:56
+#: ./changeowner.pt:61
 msgid "Remove old owners from the creators list"
 msgstr "Rimuovi vecchi possessori dalla lista dei creatori"
 
-#: ./changeowner.pt:63
+#: ./changeowner.pt:69
 msgid "Remove the 'owner role' for the old owners"
 msgstr "Rimuovi il 'ruolo possessore' dai vecchi possessori"
 
-#: ./changeowner.pt:44
+#: ./changeowner.pt:48
 msgid "The new owner:"
 msgstr "Il nuovo possessore:"
 
-#: ./changeowner.pt:34
+#: ./changeowner.pt:38
 msgid "The old owners:"
 msgstr "I vecchi possessori:"
 
@@ -69,3 +69,9 @@ msgstr "Devi selezionare un nuovo utente."
 msgid "You have to select one or more from the old owners."
 msgstr "Devi selezionare uno o più vecchi utenti."
 
+#. Default: "Insert an absolute path starting from the portal root (for example: \"/events\"). Only contents inside this subtree will be touched."
+#: ./changeowner.pt:30
+msgid "path_help"
+msgstr ""
+"Inserisci un percorso assoluto a partire dalla radice del portale (per esempio: \"/eventi\").\n"
+"Saranno toccati solo i contenuti dentro a questo sotto-albero."

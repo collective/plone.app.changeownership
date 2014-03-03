@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: plone.app.changeownership\n"
-"POT-Creation-Date: 2014-02-28 17:04+0000\n"
+"POT-Creation-Date: 2014-03-03 10:16+0000\n"
 "PO-Revision-Date: 2011-07-20 14:29+0800\n"
 "Last-Translator: Jian Aijun <jianaijun@gmail.com>\n"
 "Language-Team: UGent Portaalteam <portaal@ugent.be>\n"
@@ -25,7 +25,7 @@ msgstr ""
 msgid "Change Ownership"
 msgstr "变更改所有权"
 
-#: ./changeowner.pt:70
+#: ./changeowner.pt:77
 msgid "Exclude members folder"
 msgstr "排除 成员文件夹"
 
@@ -37,23 +37,23 @@ msgstr "对象已更新"
 msgid "Path filter"
 msgstr "路径筛选器"
 
-#: ./changeowner.pt:77
+#: ./changeowner.pt:85
 msgid "Perform as Dry Run"
 msgstr "模拟执行"
 
-#: ./changeowner.pt:56
+#: ./changeowner.pt:61
 msgid "Remove old owners from the creators list"
 msgstr "从创建者名单中删除老的所有者"
 
-#: ./changeowner.pt:63
+#: ./changeowner.pt:69
 msgid "Remove the 'owner role' for the old owners"
 msgstr "移除 老的所有者的 '所有者角色' "
 
-#: ./changeowner.pt:44
+#: ./changeowner.pt:48
 msgid "The new owner:"
 msgstr "新的所有者:"
 
-#: ./changeowner.pt:34
+#: ./changeowner.pt:38
 msgid "The old owners:"
 msgstr "老的所有者:"
 
@@ -68,4 +68,9 @@ msgstr "你必须选择一个新的所有者。"
 #: ./change_owner.py:16
 msgid "You have to select one or more from the old owners."
 msgstr "你必须选择一个或多个的老的所有者。"
+
+#. Default: "Insert an absolute path starting from the portal root (for example: \"/events\"). Only contents inside this subtree will be touched."
+#: ./changeowner.pt:30
+msgid "path_help"
+msgstr ""
 

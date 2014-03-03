@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2014-02-28 17:04+0000\n"
+"POT-Creation-Date: 2014-03-03 10:16+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -25,7 +25,7 @@ msgstr ""
 msgid "Change Ownership"
 msgstr ""
 
-#: ./changeowner.pt:70
+#: ./changeowner.pt:77
 msgid "Exclude members folder"
 msgstr ""
 
@@ -37,23 +37,23 @@ msgstr ""
 msgid "Path filter"
 msgstr ""
 
-#: ./changeowner.pt:77
+#: ./changeowner.pt:85
 msgid "Perform as Dry Run"
 msgstr ""
 
-#: ./changeowner.pt:56
+#: ./changeowner.pt:61
 msgid "Remove old owners from the creators list"
 msgstr ""
 
-#: ./changeowner.pt:63
+#: ./changeowner.pt:69
 msgid "Remove the 'owner role' for the old owners"
 msgstr ""
 
-#: ./changeowner.pt:44
+#: ./changeowner.pt:48
 msgid "The new owner:"
 msgstr ""
 
-#: ./changeowner.pt:34
+#: ./changeowner.pt:38
 msgid "The old owners:"
 msgstr ""
 
@@ -67,5 +67,10 @@ msgstr ""
 
 #: ./change_owner.py:16
 msgid "You have to select one or more from the old owners."
+msgstr ""
+
+#. Default: "Insert an absolute path starting from the portal root (for example: \"/events\"). Only contents inside this subtree will be touched."
+#: ./changeowner.pt:30
+msgid "path_help"
 msgstr ""
 

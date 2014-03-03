@@ -1,13 +1,11 @@
 # -*- coding: utf-8 -*-
 
 import unittest
-
 from zope.component import getMultiAdapter
-
+from DateTime import DateTime
 from plone.app.testing import TEST_USER_NAME
 from plone.app.testing import TEST_USER_ID
 from plone.app.testing import login
-
 from plone.app.changeownership.testing import OWNERSHIP_INTEGRATION_TESTING
 
 
@@ -53,3 +51,15 @@ class ChangeOWnershipTestCase(unittest.TestCase):
         view.change_owner()
         self.assertEqual(portal.page.Creator(), 'user')
 
+    def test_do_not_change_modification_time(self):
+        portal = self.layer['portal']
+        request = self.layer['request']
+        request.form['oldowners'] = [TEST_USER_ID]
+        request.form['newowner'] = 'user'
+        request.form['change_modification_date'] = False
+        request.form['submit'] = '1'
+        portal.page.setModificationDate(DateTime()-1)
+        old_modification_date = portal.page.ModificationDate()
+        view = getMultiAdapter((portal.page, request), name=u"change-owner")
+        view.change_owner()
+        self.assertEqual(portal.page.ModificationDate(), old_modification_date)

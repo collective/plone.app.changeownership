@@ -4,9 +4,18 @@ Changelog
 0.5 (unreleased)
 ----------------
 
-- Minor changes to ownership form [keul]
-- Support for Site Administrator role with a proper permissions [keul]
+- Minor changes to ownership form
+  [keul]
+- Support for Site Administrator role with a proper permissions
+  [keul]
 - Added uninstall profile
+  [keul]
+- Closed `#3`__:  Dexterity content doesn't have Creators method
+  [keul]
+- Added new check flag to chose if changing modification date or not
+  [keul]
+
+__ http://plone.org/products/plone.app.changeownership/issues/3
 
 0.4 (2012-09-20)
 ----------------

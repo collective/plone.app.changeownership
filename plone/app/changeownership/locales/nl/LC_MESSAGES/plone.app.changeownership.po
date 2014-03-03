@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: plone.app.changeownership\n"
-"POT-Creation-Date: 2014-03-03 10:16+0000\n"
+"POT-Creation-Date: 2014-03-03 10:21+0000\n"
 "PO-Revision-Date: 2010-02-14 13:35+0000\n"
 "Last-Translator: UGent Portaalteam <portaal@ugent.be>\n"
 "Language-Team: UGent Portaalteam <portaal@ugent.be>\n"
@@ -25,6 +25,10 @@ msgstr ""
 msgid "Change Ownership"
 msgstr "Verander Eigendom"
 
+#: ./changeowner.pt:85
+msgid "Change the modification date"
+msgstr ""
+
 #: ./changeowner.pt:77
 msgid "Exclude members folder"
 msgstr "Uitsluiten van de gebruikers-folder"
@@ -37,7 +41,7 @@ msgstr "Objecten geupdate"
 msgid "Path filter"
 msgstr ""
 
-#: ./changeowner.pt:85
+#: ./changeowner.pt:93
 msgid "Perform as Dry Run"
 msgstr ""
 

@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2014-03-03 10:16+0000\n"
+"POT-Creation-Date: 2014-03-03 10:21+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -25,6 +25,10 @@ msgstr ""
 msgid "Change Ownership"
 msgstr ""
 
+#: ./changeowner.pt:85
+msgid "Change the modification date"
+msgstr ""
+
 #: ./changeowner.pt:77
 msgid "Exclude members folder"
 msgstr ""
@@ -37,7 +41,7 @@ msgstr ""
 msgid "Path filter"
 msgstr ""
 
-#: ./changeowner.pt:85
+#: ./changeowner.pt:93
 msgid "Perform as Dry Run"
 msgstr ""
 

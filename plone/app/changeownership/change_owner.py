@@ -1,12 +1,11 @@
-from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
-from Products.Five.browser import BrowserView
+from Acquisition import aq_base
 from Products.CMFCore.utils import getToolByName
 from Products.CMFPlone.utils import base_hasattr
-
-from zope.component import getMultiAdapter
-from plone.memoize.view import memoize
-
+from Products.Five.browser import BrowserView
+from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from plone.app.changeownership import i18nMessageFactory as _
+from plone.memoize.view import memoize
+from zope.component import getMultiAdapter
 
 
 class ChangeOwner(BrowserView):
@@ -44,6 +43,10 @@ class ChangeOwner(BrowserView):
     def path_filter(self):
         """Do we have an old path?"""
         return self.request.form.get('path', '')
+
+    def change_modification_date(self):
+        """Do must change the modification datetime ? """
+        return self.request.form.get('change_modification_date', False)
 
     def list_authors(self):
         """Returns a list of members that have created objects
@@ -99,7 +102,7 @@ class ChangeOwner(BrowserView):
         return members
 
     def change_owner(self):
-
+        """Main method"""
         old_owners = self.request.form.get('oldowners', [])
         new_owner = self.request.form.get('newowner', '')
         path = self.request.form.get('path', '')
@@ -108,7 +111,6 @@ class ChangeOwner(BrowserView):
 
         self.status = []
         if 'submit' in self.request.form:
-
             if isinstance(old_owners, str):
                 old_owners = [old_owners]
 
@@ -144,7 +146,14 @@ class ChangeOwner(BrowserView):
                     obj = brain.getObject()
                     self._change_ownership(obj, new_owner, old_owners)
                     if base_hasattr(obj, 'reindexObject'):
-                        obj.reindexObject()
+                        if self.change_modification_date():
+                            obj.reindexObject()
+                        else:
+                            # We don't want change the last modification date
+                            old_modification_date = obj.ModificationDate()
+                            obj.reindexObject()
+                            obj.setModificationDate(old_modification_date)
+                            obj.reindexObject(idxs=['modified'])
                 else:
                     ret += "%s " % brain.getPath()
 
@@ -174,7 +183,11 @@ class ChangeOwner(BrowserView):
 
         #2. Remove old authors if we was asked to and add the new_owner
         #   as primary author
-        creators = list(obj.Creators())
+        if hasattr(aq_base(obj), 'Creators'):
+            creators = list(obj.Creators())
+        else:
+            # Probably a Dexterity content type
+            creators = list(obj.listCreators())
         if self.delete_old_creators():
             creators = [c for c in creators if c not in old_owners]
 

@@ -79,6 +79,14 @@
 
     <div class="field">
        <input type="checkbox" 
+              name="change_modification_date:boolean"
+              id="change_modification_date"
+              tal:attributes="checked view/change_modification_date" />
+       <label for="change_modification_date" i18n:translate="">Change the modification date</label><br/>
+    </div>
+
+    <div class="field">
+       <input type="checkbox"
               name="dry_run:boolean"
               id="dry_run"
               tal:attributes="checked view/dry_run" />

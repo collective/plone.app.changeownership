@@ -3,7 +3,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2014-03-03 10:16+0000\n"
+"POT-Creation-Date: 2014-03-03 10:21+0000\n"
 "PO-Revision-Date: 2008-11-23 18:35+0200\n"
 "Last-Translator: Luca Fabbri <keul@redturtle.it>\n"
 "Language-Team: RedTurtle Technology <sviluppoplone@redturtle.it>\n"
@@ -25,6 +25,10 @@ msgstr "Aggiunge un nuovo modulo nel pannello di controllo per aiutare nel cambi
 msgid "Change Ownership"
 msgstr "Cambio Proprietario"
 
+#: ./changeowner.pt:85
+msgid "Change the modification date"
+msgstr "Cambia la data di ultima modifica"
+
 #: ./changeowner.pt:77
 msgid "Exclude members folder"
 msgstr "Escludi cartelle utenti"
@@ -37,9 +41,9 @@ msgstr "Oggetti aggiornati"
 msgid "Path filter"
 msgstr "Filtro sul percorso"
 
-#: ./changeowner.pt:85
+#: ./changeowner.pt:93
 msgid "Perform as Dry Run"
-msgstr "Esegui come simulazione"
+msgstr "Esegui simulazione"
 
 #: ./changeowner.pt:61
 msgid "Remove old owners from the creators list"
@@ -75,3 +79,4 @@ msgid "path_help"
 msgstr ""
 "Inserisci un percorso assoluto a partire dalla radice del portale (per esempio: \"/eventi\").\n"
 "Saranno toccati solo i contenuti dentro a questo sotto-albero."
+

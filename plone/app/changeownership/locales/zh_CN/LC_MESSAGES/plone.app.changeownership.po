@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: plone.app.changeownership\n"
-"POT-Creation-Date: 2014-03-03 10:16+0000\n"
+"POT-Creation-Date: 2014-03-03 10:21+0000\n"
 "PO-Revision-Date: 2011-07-20 14:29+0800\n"
 "Last-Translator: Jian Aijun <jianaijun@gmail.com>\n"
 "Language-Team: UGent Portaalteam <portaal@ugent.be>\n"
@@ -25,6 +25,10 @@ msgstr ""
 msgid "Change Ownership"
 msgstr "变更改所有权"
 
+#: ./changeowner.pt:85
+msgid "Change the modification date"
+msgstr ""
+
 #: ./changeowner.pt:77
 msgid "Exclude members folder"
 msgstr "排除 成员文件夹"
@@ -37,7 +41,7 @@ msgstr "对象已更新"
 msgid "Path filter"
 msgstr "路径筛选器"
 
-#: ./changeowner.pt:85
+#: ./changeowner.pt:93
 msgid "Perform as Dry Run"
 msgstr "模拟执行"
 

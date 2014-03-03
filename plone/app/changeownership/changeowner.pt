@@ -32,7 +32,7 @@
 
     <div class="field">
        <label for="oldowners" i18n:translate="">The old owners:</label><br/>
-       <select name="oldowners" MULTIPLE>
+       <select name="oldowners" multiple="multiple">
          <tal:loop tal:repeat="author view/list_authors">
           <option tal:content="author/name" tal:attributes="value author/id; selected author/selected">author</option>
          </tal:loop> 

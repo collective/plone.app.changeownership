@@ -27,12 +27,12 @@
   <form action="./change-owner" method="post">
     <div class="field">
       <label for="path" i18n:translate="">Path filter</label><br />
-      <input type="text" name="path" tal:attributes="value view/path_filter" />
+      <input type="text" name="path" id="path" size="50" tal:attributes="value view/path_filter" />
     </div>
 
     <div class="field">
        <label for="oldowners" i18n:translate="">The old owners:</label><br/>
-       <select name="oldowners" multiple="multiple">
+       <select name="oldowners" id="oldowners" multiple="multiple">
          <tal:loop tal:repeat="author view/list_authors">
           <option tal:content="author/name" tal:attributes="value author/id; selected author/selected">author</option>
          </tal:loop> 
@@ -42,7 +42,7 @@
     
     <div class="field">
        <label for="newowner" i18n:translate="">The new owner:</label><br/>
-       <select name="newowner">
+       <select name="newowner" id="newowner">
          <tal:loop tal:repeat="member view/list_members">
           <option tal:content="member/name" tal:attributes="value member/id; selected member/selected">member</option>
          </tal:loop> 
@@ -51,28 +51,32 @@
 
     <div class="field">
        <input type="checkbox" 
-              name="delete_old_creators:boolean" 
+              name="delete_old_creators:boolean"
+              id="delete_old_creators"
               tal:attributes="checked view/delete_old_creators" />
        <label for="delete_old_creators" i18n:translate="">Remove old owners from the creators list</label><br/>
     </div>
 
     <div class="field">
        <input type="checkbox" 
-              name="delete_old_owners:boolean" 
+              name="delete_old_owners:boolean"
+              id="delete_old_owners"
               tal:attributes="checked view/delete_old_owners" />
        <label for="delete_old_owners" i18n:translate="">Remove the 'owner role' for the old owners</label><br/>
     </div>
 
     <div class="field">
        <input type="checkbox" 
-              name="exclude_members_folder:boolean" 
+              name="exclude_members_folder:boolean"
+              id="exclude_members_folder"
               tal:attributes="checked view/exclude_members_folder" />
        <label for="exclude_members_folder" i18n:translate="">Exclude members folder</label><br/>
     </div>
 
     <div class="field">
        <input type="checkbox" 
-              name="dry_run:boolean" 
+              name="dry_run:boolean"
+              id="dry_run"
               tal:attributes="checked view/dry_run" />
        <label for="dry_run" i18n:translate="">Perform as Dry Run</label><br/>
     </div>

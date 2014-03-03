@@ -9,7 +9,7 @@
     appId="plone.app.changeownership"
 	category="Products"
 	condition_expr=""
-    url_expr="string:${portal_url}/change-owner"
+    url_expr="string:${portal_url}/@@change-owner"
     visible="True"
 	icon_expr="string:${portal_url}/group.png"
 	i18n:attributes="title">

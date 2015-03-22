@@ -132,7 +132,7 @@ class ChangeOwner(BrowserView):
                 members_folder_path = '/'.join(self.membership.getMembersFolder().getPhysicalPath())
             query = {'Creator': old_owners}
             if path:
-                query['path'] = self.context.portal_url.getPortalObject().getId() + path
+                query['path'] = '/'.join(self.context.portal_url.getPortalObject().getPhysicalPath()) + path
 
             count = 0
             for brain in self.catalog(**query):

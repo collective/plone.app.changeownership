@@ -15,6 +15,9 @@ Changelog
 - Added new check flag to chose if changing modification date or not
   [keul]
 
+- Add buildout config
+  [do3cc]
+
 __ http://plone.org/products/plone.app.changeownership/issues/3
 
 0.4 (2012-09-20)

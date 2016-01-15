@@ -13,64 +13,70 @@ from zope.component import getMultiAdapter
 class ChangeOwnerHandler(object):
     objects_updated_message = _(u"Objects updated")
 
-    def __init__(self, old_owners, new_owner, path, dry_run,
-                 context, exclude_members_folder,
-                 change_modification_date, delete_old_creators,
-                 delete_old_owners):
-        self.old_owners = old_owners
-        self.new_owner = new_owner
-        self.path = path
-        self.dry_run = dry_run
+    def __init__(self,
+                 context,
+                 change_modification_date,
+                 delete_old_creators,
+                 delete_old_owners,
+                 dry_run,
+                 exclude_members_folder,
+                 new_owner,
+                 old_owners,
+                 path):
         self.context = context
-        self.exclude_members_folder = exclude_members_folder
+
         self.change_modification_date = change_modification_date
         self.delete_old_creators = delete_old_creators
         self.delete_old_owners = delete_old_owners
+        self.dry_run = dry_run
+        self.exclude_members_folder = exclude_members_folder
+        self.new_owner = new_owner
+        self.old_owners = [c for c in old_owners if c != new_owner]
+        self.path = path
 
     def __call__(self):
         ret = []
-        # clean up
-        old_owners = [c for c in self.old_owners if c != self.new_owner]
-
         members_folder = self.membership_tool.getMembersFolder()
         members_folder_path = None
         if members_folder:
             members_folder_path = '/'.join(self.membership_tool
                                            .getMembersFolder()
                                            .getPhysicalPath())
-        query = {'Creator': old_owners}
+
+        count = -1
+
+        for count, obj in enumerate(self._objectsToChange(
+                members_folder_path)):
+            if self.dry_run:
+                ret.append(obj.absolute_url(relative=True))
+                continue
+            self._change_ownership(obj)
+            if base_hasattr(obj, 'reindexObject'):
+                if self.change_modification_date:
+                    obj.reindexObject()
+                else:
+                    # We don't want change the last modification date
+                    old_modification_date = obj.ModificationDate()
+                    obj.reindexObject()
+                    obj.setModificationDate(old_modification_date)
+                    obj.reindexObject(idxs=['modified'])
+
+        ret.insert(0, self.objects_updated_message + " (%s)" % count + 1)
+
+        return ret
+
+    def _objectsToChange(self, members_folder_path):
+        query = {'Creator': self.old_owners}
         if self.path:
             query['path'] = (self.context.portal_url
                              .getPortalObject().getId() + self.path)
-
-        count = 0
         for brain in self.catalog(**query):
             if self.exclude_members_folder and members_folder_path and \
                brain.getPath().startswith(members_folder_path):
                 # we dont want to change ownership for the members folder
                 # and its contents
                 continue
-
-            if not self.dry_run:
-                obj = brain.getObject()
-                self._change_ownership(obj, self.new_owner, old_owners)
-                if base_hasattr(obj, 'reindexObject'):
-                    if self.change_modification_date:
-                        obj.reindexObject()
-                    else:
-                        # We don't want change the last modification date
-                        old_modification_date = obj.ModificationDate()
-                        obj.reindexObject()
-                        obj.setModificationDate(old_modification_date)
-                        obj.reindexObject(idxs=['modified'])
-            else:
-                ret += "%s " % brain.getPath()
-
-            count += 1
-
-        ret.insert(0, self.objects_updated_message + " (%s)" % count)
-
-        return ret
+            yield brain.getObject()
 
     @property
     def catalog(self):
@@ -80,16 +86,16 @@ class ChangeOwnerHandler(object):
     def membership_tool(self):
         return getToolByName(self.context, 'portal_membership')
 
-    def _change_ownership(self, obj, new_owner, old_owners):
+    def _change_ownership(self, obj):
         """Change object ownership
         """
 
         # 1. Change object ownership
         acl_users = getattr(self.context, 'acl_users')
-        user = acl_users.getUserById(new_owner)
+        user = acl_users.getUserById(self.new_owner)
 
         if user is None:
-            user = self.membership_tool.getMemberById(new_owner)
+            user = self.membership_tool.getMemberById(self.new_owner)
             if user is None:
                 raise KeyError('Only retrievable users in this site can be made owners.')  # NOQA
 
@@ -103,20 +109,20 @@ class ChangeOwnerHandler(object):
             # Probably a Dexterity content type
             creators = list(obj.listCreators())
         if self.delete_old_creators:
-            creators = [c for c in creators if c not in old_owners]
+            creators = [c for c in creators if c not in self.old_owners]
 
-        if new_owner in creators:
+        if self.new_owner in creators:
             # Don't add same creator twice, but move to front
-            del creators[creators.index(new_owner)]
+            del creators[creators.index(self.new_owner)]
 
-        obj.setCreators([new_owner] + creators)
+        obj.setCreators([self.new_owner] + creators)
 
         # 3. Remove the "owner role" from the old owners if we was asked to
         #    and add the new_owner as owner
         if self.delete_old_owners:
             # remove old owners
             owners = [o for o in obj.users_with_local_role('Owner')
-                      if o in old_owners]
+                      if o in self.old_owners]
             for owner in owners:
                 roles = list(obj.get_local_roles_for_userid(owner))
                 roles.remove('Owner')
@@ -125,10 +131,10 @@ class ChangeOwnerHandler(object):
                 else:
                     obj.manage_delLocalRoles([owner])
 
-        roles = list(obj.get_local_roles_for_userid(new_owner))
+        roles = list(obj.get_local_roles_for_userid(self.new_owner))
         if 'Owner' not in roles:
             roles.append('Owner')
-            obj.manage_setLocalRoles(new_owner, roles)
+            obj.manage_setLocalRoles(self.new_owner, roles)
 
 
 @total_ordering
@@ -256,14 +262,15 @@ class ChangeOwner(BrowserView):
         if self.status:
             return self.__call__()
 
-        handler = ChangeOwnerHandler(self.old_owners, self.new_owner,
-                                     self.path,
-                                     self.dry_run,
-                                     self.context,
-                                     self.exclude_members_folder,
+        handler = ChangeOwnerHandler(self.context,
                                      self.change_modification_date,
                                      self.delete_old_creators,
-                                     self.delete_old_owners)
+                                     self.delete_old_owners,
+                                     self.dry_run,
+                                     self.exclude_members_folder,
+                                     self.new_owner,
+                                     self.old_owners,
+                                     self.path)
         self.status.extend(handler())
 
         return self.__call__()

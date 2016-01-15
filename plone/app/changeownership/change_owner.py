@@ -4,24 +4,21 @@ from Products.CMFPlone.utils import base_hasattr
 from Products.Five.browser import BrowserView
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from plone.app.changeownership import i18nMessageFactory as _
-from plone.memoize.view import memoize
 from zope.component import getMultiAdapter
 
 
 class ChangeOwnerHandler(object):
     objects_updated_message = _(u"Objects updated")
 
-    def __init__(self, old_owners, new_owner, path, dryrun,
-                 membership_tool, context, catalog, exclude_members_folder,
+    def __init__(self, old_owners, new_owner, path, dry_run,
+                 context, exclude_members_folder,
                  change_modification_date, delete_old_creators,
                  delete_old_owners):
         self.old_owners = old_owners
         self.new_owner = new_owner
         self.path = path
-        self.dryrun = dryrun
-        self.membership_tool = membership_tool
+        self.dry_run = dry_run
         self.context = context
-        self.catalog = catalog
         self.exclude_members_folder = exclude_members_folder
         self.change_modification_date = change_modification_date
         self.delete_old_creators = delete_old_creators
@@ -45,17 +42,17 @@ class ChangeOwnerHandler(object):
 
         count = 0
         for brain in self.catalog(**query):
-            if self.exclude_members_folder() and members_folder_path and \
+            if self.exclude_members_folder and members_folder_path and \
                brain.getPath().startswith(members_folder_path):
                 # we dont want to change ownership for the members folder
                 # and its contents
                 continue
 
-            if not self.dryrun:
+            if not self.dry_run:
                 obj = brain.getObject()
                 self._change_ownership(obj, self.new_owner, old_owners)
                 if base_hasattr(obj, 'reindexObject'):
-                    if self.change_modification_date():
+                    if self.change_modification_date:
                         obj.reindexObject()
                     else:
                         # We don't want change the last modification date
@@ -71,6 +68,14 @@ class ChangeOwnerHandler(object):
         ret.insert(0, self.objects_updated_message + " (%s)" % count)
 
         return ret
+
+    @property
+    def catalog(self):
+        return getToolByName(self.context, 'portal_catalog')
+
+    @property
+    def membership_tool(self):
+        return getToolByName(self.context, 'portal_membership')
 
     def _change_ownership(self, obj, new_owner, old_owners):
         """Change object ownership
@@ -132,6 +137,12 @@ class ChangeOwner(BrowserView):
 
     def __init__(self, context, request):
         super(ChangeOwner, self).__init__(context, request)
+        f = self.request.form
+        self.delete_old_owners = f.get('delete_old_owners', False)
+        self.delete_old_creators = f.get('delete_old_creators', False)
+        self.path = f.get('path', '')
+        self.change_modification_date = f.get('change_modification_date',
+                                              False)
         self.status = []
 
     @property
@@ -141,30 +152,6 @@ class ChangeOwner(BrowserView):
     @property
     def membership(self):
         return getToolByName(self.context, 'portal_membership')
-
-    def exclude_members_folder(self):
-        """Do we have to exclude the members folder ? """
-        return self.request.form.get('exclude_members_folder', True)
-
-    def dry_run(self):
-        """Do we have to do a dry run ? """
-        return self.request.form.get('dry_run', True)
-
-    def delete_old_creators(self):
-        """Do we have to delete old owners from the creators list ? """
-        return self.request.form.get('delete_old_creators', False)
-
-    def delete_old_owners(self):
-        """Do we have to delete old owners from the owners role list ? """
-        return self.request.form.get('delete_old_owners', False)
-
-    def path_filter(self):
-        """Do we have an old path?"""
-        return self.request.form.get('path', '')
-
-    def change_modification_date(self):
-        """Do must change the modification datetime ? """
-        return self.request.form.get('change_modification_date', False)
 
     def list_authors(self):
         """Returns a list of members that have created objects
@@ -193,7 +180,6 @@ class ChangeOwner(BrowserView):
                      cmp(str(a['name']).lower(), str(b['name']).lower()))
         return authors
 
-    @memoize
     def list_members(self):
         """Returns the list of all plone members
         """
@@ -227,10 +213,11 @@ class ChangeOwner(BrowserView):
 
     def change_owner(self):
         """Main method"""
-        old_owners = self.request.form.get('oldowners', [])
-        new_owner = self.request.form.get('newowner', '')
-        path = self.request.form.get('path', '')
-        dryrun = bool(self.request.form.get('dry_run', False))
+        f = self.request.form
+        old_owners = f.get('oldowners', [])
+        new_owner = f.get('newowner', '')
+        self.dry_run = f.get('dry_run', False)
+        self.exclude_members_folder = f.get('exclude_members_folder', False)
 
         if isinstance(old_owners, str):
             old_owners = [old_owners]
@@ -244,9 +231,10 @@ class ChangeOwner(BrowserView):
         if self.status:
             return self.__call__()
 
-        handler = ChangeOwnerHandler(old_owners, new_owner, path, dryrun,
-                                     self.membership, self.context,
-                                     self.catalog, self.exclude_members_folder,
+        handler = ChangeOwnerHandler(old_owners, new_owner, self.path,
+                                     self.dry_run,
+                                     self.context,
+                                     self.exclude_members_folder,
                                      self.change_modification_date,
                                      self.delete_old_creators,
                                      self.delete_old_owners)

@@ -31,7 +31,7 @@
           Insert an absolute path starting from the portal root (for example: &quot;/events&quot;).
         Only contents inside this subtree will be touched.
       </div>
-      <input type="text" name="path" id="path" size="50" tal:attributes="value view/path_filter" />
+      <input type="text" name="path" id="path" size="50" tal:attributes="value view/path" />
     </div>
 
     <div class="field">
@@ -70,15 +70,15 @@
     </div>
 
     <div class="field">
-       <input type="checkbox" 
+       <input type="checkbox"
               name="exclude_members_folder:boolean"
               id="exclude_members_folder"
-              tal:attributes="checked view/exclude_members_folder" />
+              tal:attributes="checked view/exclude_members_folder | python: True" />
        <label for="exclude_members_folder" i18n:translate="">Exclude members folder</label><br/>
     </div>
 
     <div class="field">
-       <input type="checkbox" 
+       <input type="checkbox"
               name="change_modification_date:boolean"
               id="change_modification_date"
               tal:attributes="checked view/change_modification_date" />
@@ -89,7 +89,7 @@
        <input type="checkbox"
               name="dry_run:boolean"
               id="dry_run"
-              tal:attributes="checked view/dry_run" />
+              tal:attributes="checked view/dry_run | python: True" />
        <label for="dry_run" i18n:translate="">Perform as Dry Run</label><br/>
     </div>
 

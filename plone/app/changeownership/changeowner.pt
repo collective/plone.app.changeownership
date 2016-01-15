@@ -11,7 +11,7 @@
 <div metal:fill-slot="prefs_configlet_main">
 
   <dl class="portalMessage"
-      tal:condition="view/status">
+      tal:condition="view/status | nothing">
     <tal:repeat repeat="msg view/status">
       <dt>Info</dt>
       <dd tal:content="msg">Message</dd>
@@ -24,7 +24,7 @@
       This form will help you to pass ownership of objects owned by old users to a new user.
   </div>
     
-  <form action="./change-owner" method="post">
+  <form action="./perform-change-owner" method="post">
     <div class="field">
       <label for="path" i18n:translate="">Path filter</label>
       <div class="formHelp" i18n:translate="path_help">

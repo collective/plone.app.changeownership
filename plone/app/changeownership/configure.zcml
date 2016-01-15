@@ -45,6 +45,13 @@
      for="*"
      name="change-owner"
      class=".change_owner.ChangeOwner"
+     permission="plone.app.changeownership.ManageOwnership"
+     />
+    
+  <browser:page
+     for="*"
+     name="perform-change-owner"
+     class=".change_owner.ChangeOwner"
      attribute="change_owner"
      permission="plone.app.changeownership.ManageOwnership"
      />

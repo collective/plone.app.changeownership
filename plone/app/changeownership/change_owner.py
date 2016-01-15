@@ -10,7 +10,7 @@ from zope.component import getMultiAdapter
 
 class ChangeOwner(BrowserView):
 
-    template = ViewPageTemplateFile("changeowner.pt")
+    __call__ = ViewPageTemplateFile("changeowner.pt")
 
     need_oldowners_message = _(u"You have to select one or more from the old owners.")  # NOQA
     need_newowner_message = _(u"You have to select a new owner.")
@@ -116,63 +116,62 @@ class ChangeOwner(BrowserView):
         ret = ''
 
         self.status = []
-        if 'submit' in self.request.form:
-            if isinstance(old_owners, str):
-                old_owners = [old_owners]
+        if isinstance(old_owners, str):
+            old_owners = [old_owners]
 
-            if not new_owner:
-                self.status.append(self.need_newowner_message)
+        if not new_owner:
+            self.status.append(self.need_newowner_message)
 
-            if not old_owners:
-                self.status.append(self.need_oldowners_message)
+        if not old_owners:
+            self.status.append(self.need_oldowners_message)
 
-            if self.status:
-                return self.template()
+        if self.status:
+            return self.__call__()
 
-            # clean up
-            old_owners = [c for c in old_owners if c != new_owner]
+        # clean up
+        old_owners = [c for c in old_owners if c != new_owner]
 
-            members_folder = self.membership.getMembersFolder()
-            members_folder_path = None
-            if members_folder:
-                members_folder_path = '/'.join(self.membership
-                                               .getMembersFolder()
-                                               .getPhysicalPath())
-            query = {'Creator': old_owners}
-            if path:
-                query['path'] = (self.context.portal_url
-                                 .getPortalObject().getId() + path)
+        members_folder = self.membership.getMembersFolder()
+        members_folder_path = None
+        if members_folder:
+            members_folder_path = '/'.join(self.membership
+                                           .getMembersFolder()
+                                           .getPhysicalPath())
+        query = {'Creator': old_owners}
+        if path:
+            query['path'] = (self.context.portal_url
+                             .getPortalObject().getId() + path)
 
-            count = 0
-            for brain in self.catalog(**query):
-                if self.exclude_members_folder() and members_folder_path and \
-                   brain.getPath().startswith(members_folder_path):
-                    # we dont want to change ownership for the members folder
-                    # and its contents
-                    continue
+        count = 0
+        for brain in self.catalog(**query):
+            if self.exclude_members_folder() and members_folder_path and \
+               brain.getPath().startswith(members_folder_path):
+                # we dont want to change ownership for the members folder
+                # and its contents
+                continue
 
-                if not dryrun:
-                    obj = brain.getObject()
-                    self._change_ownership(obj, new_owner, old_owners)
-                    if base_hasattr(obj, 'reindexObject'):
-                        if self.change_modification_date():
-                            obj.reindexObject()
-                        else:
-                            # We don't want change the last modification date
-                            old_modification_date = obj.ModificationDate()
-                            obj.reindexObject()
-                            obj.setModificationDate(old_modification_date)
-                            obj.reindexObject(idxs=['modified'])
-                else:
-                    ret += "%s " % brain.getPath()
+            if not dryrun:
+                obj = brain.getObject()
+                self._change_ownership(obj, new_owner, old_owners)
+                if base_hasattr(obj, 'reindexObject'):
+                    if self.change_modification_date():
+                        obj.reindexObject()
+                    else:
+                        # We don't want change the last modification date
+                        old_modification_date = obj.ModificationDate()
+                        obj.reindexObject()
+                        obj.setModificationDate(old_modification_date)
+                        obj.reindexObject(idxs=['modified'])
+            else:
+                ret += "%s " % brain.getPath()
 
-                count += 1
+            count += 1
 
-            self.status.append(self.objects_updated_message + " (%s)" % count)
-            if ret:
-                self.status.append(ret)
+        self.status.append(self.objects_updated_message + " (%s)" % count)
+        if ret:
+            self.status.append(ret)
 
-        return self.template()
+        return self.__call__()
 
     def _change_ownership(self, obj, new_owner, old_owners):
         """Change object ownership

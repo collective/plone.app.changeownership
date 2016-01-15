@@ -4,6 +4,7 @@ from Products.CMFPlone.utils import base_hasattr
 from Products.Five.browser import BrowserView
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from plone.app.changeownership import i18nMessageFactory as _
+from zExceptions import Redirect
 from zope.component import getMultiAdapter
 
 
@@ -214,6 +215,8 @@ class ChangeOwner(BrowserView):
 
     def change_owner(self):
         """Main method"""
+        if self.request.method != 'POST':
+            raise Redirect(self.context.absolute_url() + '/change_owner')
         f = self.request.form
         old_owners = f.get('oldowners', [])
         new_owner = f.get('newowner', '')

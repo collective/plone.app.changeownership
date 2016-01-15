@@ -14,8 +14,11 @@ Changelog
   [keul]
 - Added new check flag to chose if changing modification date or not
   [keul]
-
 - Add buildout config
+  [do3cc]
+- Refactor code to split up responsabilities
+  Accidental side effect: Code can be pasted and used on
+  interactive console
   [do3cc]
 
 __ http://plone.org/products/plone.app.changeownership/issues/3

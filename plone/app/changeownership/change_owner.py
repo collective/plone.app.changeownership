@@ -12,7 +12,7 @@ class ChangeOwner(BrowserView):
 
     template = ViewPageTemplateFile("changeowner.pt")
 
-    need_oldowners_message = _(u"You have to select one or more from the old owners.")
+    need_oldowners_message = _(u"You have to select one or more from the old owners.")  # NOQA
     need_newowner_message = _(u"You have to select a new owner.")
     objects_updated_message = _(u"Objects updated")
 
@@ -60,7 +60,8 @@ class ChangeOwner(BrowserView):
 
             info = self.membership.getMemberInfo(creator)
             if info and info['fullname']:
-                d = dict(id=creator, name="%s (%s)" % (info['fullname'], creator))
+                d = dict(id=creator, name="%s (%s)" % (info['fullname'],
+                                                       creator))
             else:
                 d = dict(id=creator, name=creator)
 
@@ -70,7 +71,8 @@ class ChangeOwner(BrowserView):
                 d['selected'] = 0
             authors.append(d)
 
-        authors.sort(lambda a, b: cmp(str(a['name']).lower(), str(b['name']).lower()))
+        authors.sort(lambda a, b:
+                     cmp(str(a['name']).lower(), str(b['name']).lower()))
         return authors
 
     @memoize
@@ -81,15 +83,18 @@ class ChangeOwner(BrowserView):
         newowner = self.request.form.get('newowner', '')
 
         # plone members
-        pas_search = getMultiAdapter((self.context, self.request), name=u'pas_search')
+        pas_search = getMultiAdapter((self.context, self.request),
+                                     name=u'pas_search')
         users = list(pas_search.searchUsers())
         # + zope root members
-        users = users + list(self.context.getPhysicalRoot().acl_users.searchUsers())
+        users = users + list(self.context.getPhysicalRoot()
+                             .acl_users.searchUsers())
 
         for user in users:
             info = self.membership.getMemberInfo(user['userid'])
             if info and info['fullname']:
-                d = dict(id=user['userid'], name="%s (%s)" % (info['fullname'], user['userid']))
+                d = dict(id=user['userid'], name="%s (%s)" % (info['fullname'],
+                                                              user['userid']))
             else:
                 d = dict(id=user['userid'], name=user['userid'])
             if user['userid'] == newowner:
@@ -98,7 +103,8 @@ class ChangeOwner(BrowserView):
                 d['selected'] = 0
             members.append(d)
 
-        members.sort(lambda a, b: cmp(str(a['name']).lower(), str(b['name']).lower()))
+        members.sort(lambda a, b: cmp(str(a['name']).lower(),
+                                      str(b['name']).lower()))
         return members
 
     def change_owner(self):
@@ -123,23 +129,26 @@ class ChangeOwner(BrowserView):
             if self.status:
                 return self.template()
 
-            #clean up
+            # clean up
             old_owners = [c for c in old_owners if c != new_owner]
 
             members_folder = self.membership.getMembersFolder()
             members_folder_path = None
             if members_folder:
-                members_folder_path = '/'.join(self.membership.getMembersFolder().getPhysicalPath())
+                members_folder_path = '/'.join(self.membership
+                                               .getMembersFolder()
+                                               .getPhysicalPath())
             query = {'Creator': old_owners}
             if path:
-                query['path'] = self.context.portal_url.getPortalObject().getId() + path
+                query['path'] = (self.context.portal_url
+                                 .getPortalObject().getId() + path)
 
             count = 0
             for brain in self.catalog(**query):
                 if self.exclude_members_folder() and members_folder_path and \
                    brain.getPath().startswith(members_folder_path):
-                    #we dont want to change ownership for the members folder
-                    #and its contents
+                    # we dont want to change ownership for the members folder
+                    # and its contents
                     continue
 
                 if not dryrun:
@@ -169,19 +178,18 @@ class ChangeOwner(BrowserView):
         """Change object ownership
         """
 
-        #1. Change object ownership
+        # 1. Change object ownership
         acl_users = getattr(self.context, 'acl_users')
         user = acl_users.getUserById(new_owner)
 
         if user is None:
             user = self.membership.getMemberById(new_owner)
             if user is None:
-                raise KeyError, 'Only retrievable users in this site can be made owners.'
+                raise KeyError('Only retrievable users in this site can be made owners.')  # NOQA
 
         obj.changeOwnership(user)
 
-
-        #2. Remove old authors if we was asked to and add the new_owner
+        # 2. Remove old authors if we was asked to and add the new_owner
         #   as primary author
         if hasattr(aq_base(obj), 'Creators'):
             creators = list(obj.Creators())
@@ -192,17 +200,17 @@ class ChangeOwner(BrowserView):
             creators = [c for c in creators if c not in old_owners]
 
         if new_owner in creators:
-        # Don't add same creator twice, but move to front
+            # Don't add same creator twice, but move to front
             del creators[creators.index(new_owner)]
 
         obj.setCreators([new_owner] + creators)
 
-
-        #3. Remove the "owner role" from the old owners if we was asked to
-        #   and add the new_owner as owner
+        # 3. Remove the "owner role" from the old owners if we was asked to
+        #    and add the new_owner as owner
         if self.delete_old_owners():
-            #remove old owners
-            owners = [o for o in obj.users_with_local_role('Owner') if o in old_owners]
+            # remove old owners
+            owners = [o for o in obj.users_with_local_role('Owner')
+                      if o in old_owners]
             for owner in owners:
                 roles = list(obj.get_local_roles_for_userid(owner))
                 roles.remove('Owner')

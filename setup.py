@@ -34,6 +34,10 @@ setup(name='plone.app.changeownership',
       extras_require=dict(test=tests_require),
       install_requires=[
           'setuptools',
+          'zope.component',
+          'Zope2',
+          'zope.i18nmessageid',
+          'plone.dexterity', # plone.app.linkintegrity does not declare dependency in 1.5.8
           # -*- Extra requirements: -*-
       ],
       entry_points="""

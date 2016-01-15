@@ -28,6 +28,7 @@ class ChangeOWnershipTestCase(unittest.TestCase):
         request.form['oldowners'] = ['foo']
         request.form['newowner'] = 'user'
         request.form['submit'] = '1'
+        request.method = 'POST'
         view = getMultiAdapter((portal.page, request), name=u"change-owner")
         view.change_owner()
         self.assertTrue(portal.page.Creator(), TEST_USER_ID)
@@ -38,6 +39,7 @@ class ChangeOWnershipTestCase(unittest.TestCase):
         request.form['oldowners'] = [TEST_USER_ID]
         request.form['newowner'] = 'imnothere'
         request.form['submit'] = '1'
+        request.method = 'POST'
         view = getMultiAdapter((portal.page, request), name=u"change-owner")
         self.assertRaises(KeyError, view.change_owner)
 
@@ -47,6 +49,7 @@ class ChangeOWnershipTestCase(unittest.TestCase):
         request.form['oldowners'] = [TEST_USER_ID]
         request.form['newowner'] = 'user'
         request.form['submit'] = '1'
+        request.method = 'POST'
         view = getMultiAdapter((portal.page, request), name=u"change-owner")
         view.change_owner()
         self.assertEqual(portal.page.Creator(), 'user')
@@ -58,6 +61,7 @@ class ChangeOWnershipTestCase(unittest.TestCase):
         request.form['newowner'] = 'user'
         request.form['change_modification_date'] = False
         request.form['submit'] = '1'
+        request.method = 'POST'
         portal.page.setModificationDate(DateTime()-1)
         old_modification_date = portal.page.ModificationDate()
         view = getMultiAdapter((portal.page, request), name=u"change-owner")

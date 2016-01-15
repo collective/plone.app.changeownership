@@ -3,6 +3,8 @@ from Products.CMFCore.utils import getToolByName
 from Products.CMFPlone.utils import base_hasattr
 from Products.Five.browser import BrowserView
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
+from bisect import insort
+from functools import total_ordering
 from plone.app.changeownership import i18nMessageFactory as _
 from zExceptions import Redirect
 from zope.component import getMultiAdapter
@@ -129,9 +131,85 @@ class ChangeOwnerHandler(object):
             obj.manage_setLocalRoles(new_owner, roles)
 
 
+@total_ordering
+class MemberData(dict):
+    def __init__(self, userid, memberinfo):
+        super(MemberData, self).__init__()
+        self['id'] = userid
+        if memberinfo and memberinfo['fullname']:
+            self['name'] = '{} ({})'.format(memberinfo['fullname'],
+                                            userid)
+        else:
+            self['name'] = userid
+
+    def __eq__(self, other):
+        if isinstance(other, MemberData):
+            return str(self['name']).lower() == str(other['name']).lower()
+        else:
+            return NotImplemented
+
+    def __lt__(self, other):
+        if isinstance(other, MemberData):
+            return str(self['name']).lower() < str(other['name']).lower()
+        else:
+            return NotImplemented
+
+
+class UserInfo(object):
+
+    def __init__(self, context, pas_search_tool):
+        self.context = context
+        self.pas_search_tool = pas_search_tool
+
+    def _creators(self):
+        return (getToolByName(self.context, 'portal_catalog')
+                .uniqueValuesFor('Creator'))
+
+    def _getMemberInfo(self, userid):
+        return (getToolByName(self.context, 'portal_membership')
+                .getMemberInfo(userid))
+
+    def _getUserIds(self):
+        # plone members
+        for user in self.pas_search_tool.searchUsers():
+            yield user['userid']
+        # zope root members
+        for user in (self.context.getPhysicalRoot()
+                     .acl_users.searchUsers()):
+            yield user['userid']
+
+    def list_authors(self, preselected):
+        """Returns a list of members that have created objects
+        """
+        authors = []
+
+        for creator in self._creators():
+            if not creator:
+                continue
+            memberinfo = self._getMemberInfo(creator)
+            memberdata = MemberData(creator, memberinfo)
+            memberdata['selected'] = memberdata['id'] in creator
+            insort(authors, memberdata)
+
+        return authors
+
+    def list_members(self, preselected):
+        """Returns the list of all plone members
+        """
+        members = []
+
+        for user_id in self._getUserIds():
+            memberinfo = self._getMemberInfo(user_id)
+            memberdata = MemberData(user_id, memberinfo)
+            memberdata['selected'] = memberdata['id'] is preselected
+            insort(members, memberdata)
+
+        return members
+
+
 class ChangeOwner(BrowserView):
 
-    __call__ = ViewPageTemplateFile("changeowner.pt")
+    template = ViewPageTemplateFile("changeowner.pt")
 
     need_oldowners_message = _(u"You have to select one or more from the old owners.")  # NOQA
     need_newowner_message = _(u"You have to select a new owner.")
@@ -144,98 +222,42 @@ class ChangeOwner(BrowserView):
         self.path = f.get('path', '')
         self.change_modification_date = f.get('change_modification_date',
                                               False)
+        self.old_owners = f.get('oldowners', [])
+        if isinstance(self.old_owners, str):
+            self.old_owners = [self.old_owners]
+        self.new_owner = f.get('newowner', '')
         self.status = []
 
-    @property
-    def creators(self):
-        return (getToolByName(self.context, 'portal_catalog')
-                .uniqueValuesFor('Creator'))
-
-    @property
-    def membership(self):
-        return getToolByName(self.context, 'portal_membership')
-
-    def list_authors(self):
-        """Returns a list of members that have created objects
-        """
-        authors = []
-        oldowners = self.request.form.get('oldowners', [])
-
-        for creator in self.creators:
-            if not creator:
-                continue
-
-            info = self.membership.getMemberInfo(creator)
-            if info and info['fullname']:
-                d = dict(id=creator, name="%s (%s)" % (info['fullname'],
-                                                       creator))
-            else:
-                d = dict(id=creator, name=creator)
-
-            if creator in oldowners:
-                d['selected'] = 1
-            else:
-                d['selected'] = 0
-            authors.append(d)
-
-        authors.sort(lambda a, b:
-                     cmp(str(a['name']).lower(), str(b['name']).lower()))
-        return authors
-
-    def list_members(self):
-        """Returns the list of all plone members
-        """
-        members = []
-        newowner = self.request.form.get('newowner', '')
-
-        # plone members
-        pas_search = getMultiAdapter((self.context, self.request),
-                                     name=u'pas_search')
-        users = list(pas_search.searchUsers())
-        # + zope root members
-        users = users + list(self.context.getPhysicalRoot()
-                             .acl_users.searchUsers())
-
-        for user in users:
-            info = self.membership.getMemberInfo(user['userid'])
-            if info and info['fullname']:
-                d = dict(id=user['userid'], name="%s (%s)" % (info['fullname'],
-                                                              user['userid']))
-            else:
-                d = dict(id=user['userid'], name=user['userid'])
-            if user['userid'] == newowner:
-                d['selected'] = 1
-            else:
-                d['selected'] = 0
-            members.append(d)
-
-        members.sort(lambda a, b: cmp(str(a['name']).lower(),
-                                      str(b['name']).lower()))
-        return members
+    def __call__(self):
+        pas_search_tool = getMultiAdapter((self.context, self.request),
+                                          name=u'pas_search')
+        user_info = UserInfo(self.context, pas_search_tool)
+        self.list_authors = user_info.list_authors(self.old_owners)
+        self.list_members = user_info.list_members(self.new_owner)
+        return self.template()
 
     def change_owner(self):
         """Main method"""
         if self.request.method != 'POST':
             raise Redirect(self.context.absolute_url() + '/change_owner')
+
         f = self.request.form
-        old_owners = f.get('oldowners', [])
-        new_owner = f.get('newowner', '')
+        # Sneaky workaround to have 3 different possibilities for bool in
+        # the form: True, False, undefined == default
         self.dry_run = f.get('dry_run', False)
         self.exclude_members_folder = f.get('exclude_members_folder', False)
 
-        if isinstance(old_owners, str):
-            old_owners = [old_owners]
-
-        if not new_owner:
+        if not self.new_owner:
             self.status.append(self.need_newowner_message)
 
-        if not old_owners:
+        if not self.old_owners:
             self.status.append(self.need_oldowners_message)
 
         if self.status:
             return self.__call__()
 
-        handler = ChangeOwnerHandler(old_owners, new_owner, self.path,
+        handler = ChangeOwnerHandler(self.old_owners, self.new_owner,
+                                     self.path,
                                      self.dry_run,
                                      self.context,
                                      self.exclude_members_folder,

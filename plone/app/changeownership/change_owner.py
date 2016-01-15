@@ -146,8 +146,9 @@ class ChangeOwner(BrowserView):
         self.status = []
 
     @property
-    def catalog(self):
-        return getToolByName(self.context, 'portal_catalog')
+    def creators(self):
+        return (getToolByName(self.context, 'portal_catalog')
+                .uniqueValuesFor('Creator'))
 
     @property
     def membership(self):
@@ -159,7 +160,7 @@ class ChangeOwner(BrowserView):
         authors = []
         oldowners = self.request.form.get('oldowners', [])
 
-        for creator in self.catalog.uniqueValuesFor('Creator'):
+        for creator in self.creators:
             if not creator:
                 continue
 

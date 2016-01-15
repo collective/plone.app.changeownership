@@ -9,7 +9,7 @@ from plone.app.testing import login
 from plone.app.changeownership.testing import OWNERSHIP_INTEGRATION_TESTING
 
 
-class ChangeOWnershipTestCase(unittest.TestCase):
+class ChangeOwnershipTestCase(unittest.TestCase):
 
     layer = OWNERSHIP_INTEGRATION_TESTING
 
@@ -20,7 +20,8 @@ class ChangeOWnershipTestCase(unittest.TestCase):
 
     def _createContent(self):
         portal = self.layer['portal']
-        portal.invokeFactory(type_name="Document", id='page', title="New document")
+        portal.invokeFactory(type_name="Document", id='page',
+                             title="New document")
 
     def test_fake_oldusers(self):
         portal = self.layer['portal']

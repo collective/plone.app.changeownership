@@ -44,16 +44,16 @@
   <browser:page
      for="*"
      name="change-owner"
-     class=".change_owner.ChangeOwner"
+     class=".views.ChangeOwner"
      permission="plone.app.changeownership.ManageOwnership"
      />
-    
+
   <browser:page
      for="*"
      name="perform-change-owner"
-     class=".change_owner.ChangeOwner"
+     class=".views.ChangeOwner"
      attribute="change_owner"
      permission="plone.app.changeownership.ManageOwnership"
      />
-    
+
 </configure>

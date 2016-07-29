@@ -4,6 +4,8 @@ Changelog
 0.5 (unreleased)
 ----------------
 
+- Fixed path filter
+  [uschwarz]
 - Minor changes to ownership form
   [keul]
 - Support for Site Administrator role with a proper permissions

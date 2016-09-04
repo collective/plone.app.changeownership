@@ -46,11 +46,10 @@
     
     <div class="field">
        <label for="newowner" i18n:translate="">The new owner:</label><br/>
-       <select name="newowner" id="newowner">
-         <tal:loop tal:repeat="member view/list_members">
-          <option tal:content="member/name" tal:attributes="value member/id; selected member/selected">member</option>
-         </tal:loop> 
-       </select>
+       <div class="formHelp" i18n:translate="newowner_help">
+           Enter the ID of the new owner
+       </div>
+       <input type="text" name="newowner" id="newowner">
     </div>
 
     <div class="field">

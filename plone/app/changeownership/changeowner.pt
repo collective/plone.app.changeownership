@@ -21,67 +21,28 @@
   <h1 class="documentFirstHeading" i18n:translate="">Change Ownership</h1>
 
   <div class="documentDescription" i18n:translate="">
-      This form will help you to pass ownership of objects owned by old users to a new user.
+      This form will help you to change ownership of the current Foundation member object.
   </div>
-    
-  <form action="./change-owner" method="post">
+
+  <form tal:condition="not: view/isa_FoundationMember">
     <div class="field">
-      <label for="path" i18n:translate="">Path filter</label>
-      <div class="formHelp" i18n:translate="path_help">
-          Insert an absolute path starting from the portal root (for example: &quot;/events&quot;).
-        Only contents inside this subtree will be touched.
-      </div>
-      <input type="text" name="path" id="path" size="50" tal:attributes="value view/path_filter" />
+       <div class="formHelp" i18n:translate="incorrecttype_help">
+         You can't use this form. It works only on 'Foundation member' objects. 
+	 <br/>
+	 <br/>
+	 The current object is of type <em><span tal:replace="view/item_type">[type]</span></em>.
+       </div>
     </div>
-
-    <div class="field">
-       <label for="oldowners" i18n:translate="">The old owners:</label><br/>
-       <select name="oldowners" id="oldowners" multiple="multiple">
-         <tal:loop tal:repeat="author view/list_authors">
-          <option tal:content="author/name" tal:attributes="value author/id; selected author/selected">author</option>
-         </tal:loop> 
-       </select>
-
-    </div>  
+  </form>
     
+  <form action="./change-owner" method="post" tal:condition="view/isa_FoundationMember">
+
     <div class="field">
        <label for="newowner" i18n:translate="">The new owner:</label><br/>
        <div class="formHelp" i18n:translate="newowner_help">
            Enter the ID of the new owner
        </div>
        <input type="text" name="newowner" id="newowner">
-    </div>
-
-    <div class="field">
-       <input type="checkbox" 
-              name="delete_old_creators:boolean"
-              id="delete_old_creators"
-              tal:attributes="checked view/delete_old_creators" />
-       <label for="delete_old_creators" i18n:translate="">Remove old owners from the creators list</label><br/>
-    </div>
-
-    <div class="field">
-       <input type="checkbox" 
-              name="delete_old_owners:boolean"
-              id="delete_old_owners"
-              tal:attributes="checked view/delete_old_owners" />
-       <label for="delete_old_owners" i18n:translate="">Remove the 'owner role' for the old owners</label><br/>
-    </div>
-
-    <div class="field">
-       <input type="checkbox" 
-              name="exclude_members_folder:boolean"
-              id="exclude_members_folder"
-              tal:attributes="checked view/exclude_members_folder" />
-       <label for="exclude_members_folder" i18n:translate="">Exclude members folder</label><br/>
-    </div>
-
-    <div class="field">
-       <input type="checkbox" 
-              name="change_modification_date:boolean"
-              id="change_modification_date"
-              tal:attributes="checked view/change_modification_date" />
-       <label for="change_modification_date" i18n:translate="">Change the modification date</label><br/>
     </div>
 
     <div class="field">

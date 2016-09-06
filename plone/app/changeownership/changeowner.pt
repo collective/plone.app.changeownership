@@ -21,7 +21,7 @@
   <h1 class="documentFirstHeading" i18n:translate="">Change Ownership</h1>
 
   <div class="documentDescription" i18n:translate="">
-      This form will help you to change ownership of the current Foundation member object.
+      This form will help you to change ownership of the current Foundation member object "<span tal:replace="here/title_or_id">[title]</span>"
   </div>
 
   <form tal:condition="not: view/isa_FoundationMember">
@@ -38,10 +38,12 @@
   <form action="./change-owner" method="post" tal:condition="view/isa_FoundationMember">
 
     <div class="field">
-       <label for="newowner" i18n:translate="">The new owner:</label><br/>
-       <div class="formHelp" i18n:translate="newowner_help">
-           Enter the ID of the new owner
-       </div>
+       <label for="currentowner" i18n:translate="">The ID of the current owner:</label><br/>
+       <input type="text" name="currentowner" id="currentowner" tal:attributes="value view/current_owner" readonly="1">
+    </div>
+
+    <div class="field">
+       <label for="newowner" i18n:translate="">Enter the ID of the new owner:</label><br/>
        <input type="text" name="newowner" id="newowner">
     </div>
 

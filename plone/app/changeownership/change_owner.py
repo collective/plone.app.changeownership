@@ -30,6 +30,10 @@ class ChangeOwner(BrowserView):
         """Returns the type of the current item"""
         return self.context.Type()
 
+    def current_owner(self):
+        """Returns the owner of the current item"""
+        return self.context.getOwner()
+
     def dry_run(self):
         """Do we have to do a dry run ? """
         return self.request.form.get('dry_run', True)

@@ -4,6 +4,8 @@ Introduction
 plone.app.changeownership as it sounds is a Plone package to change objects
 ownership.
 
+IMPORTANT: This version was used only on Plone.org to change the ownership of FoundationMember objects, in Sept. 2016. As of June 25, 2017, it is no longer needed on Plone.org.
+
 Problem
 =======
 

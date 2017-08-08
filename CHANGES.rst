@@ -4,7 +4,8 @@ Changelog
 0.6 (unreleased)
 ----------------
 
-- ...
+- Plone 5 compatibility
+  [tomgross]
 
 
 0.5 (2015-07-29)

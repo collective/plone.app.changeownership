@@ -1,0 +1,16 @@
+*.py[co]
+/htmlcov
+/include
+/lib*
+/parts
+pip-selfcheck.json
+/share
+/var
+/bin
+/develop-eggs
+.DS_Store
+.coverage
+.installed.cfg
+.mr.developer.cfg
+.Python
+*.egg-info

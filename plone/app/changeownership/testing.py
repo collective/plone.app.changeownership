@@ -1,17 +1,19 @@
 # -*- coding: utf-8 -*-
-
-from zope.configuration import xmlconfig
-from Products.CMFCore.utils import getToolByName
-
-from plone.testing import z2
-
-from plone.app.testing import PLONE_FIXTURE
-from plone.app.testing import PloneSandboxLayer
-from plone.app.testing import IntegrationTesting
-from plone.app.testing import FunctionalTesting
 from plone.app.testing import applyProfile
+from plone.app.testing import FunctionalTesting
+from plone.app.testing import IntegrationTesting
+from plone.app.testing import PloneSandboxLayer
 from plone.app.testing import setRoles
 from plone.app.testing import TEST_USER_ID
+from Products.CMFCore.utils import getToolByName
+
+import pkg_resources
+
+try:
+    pkg_resources.get_distribution('plone.app.contenttypes')
+    from plone.app.contenttypes.testing import PLONE_APP_CONTENTTYPES_FIXTURE as PLONE_FIXTURE
+except pkg_resources.DistributionNotFound:
+    from plone.app.testing import PLONE_FIXTURE
 
 
 class ChangeOwnershipLayer(PloneSandboxLayer):
@@ -21,10 +23,7 @@ class ChangeOwnershipLayer(PloneSandboxLayer):
     def setUpZope(self, app, configurationContext):
         # Load ZCML for this package
         import plone.app.changeownership
-        xmlconfig.file('configure.zcml',
-                       plone.app.changeownership,
-                       context=configurationContext)
-        z2.installProduct(app, 'plone.app.changeownership')
+        self.loadZCML(package=plone.app.changeownership)
 
     def setUpPloneSite(self, portal):
         applyProfile(portal, 'plone.app.changeownership:default')

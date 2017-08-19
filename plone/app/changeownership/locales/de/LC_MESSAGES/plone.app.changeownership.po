@@ -1,0 +1,80 @@
+# Italian translation
+# keul <keul@redturtle.it>, 2011
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2014-03-03 10:21+0000\n"
+"PO-Revision-Date: 2008-11-23 18:35+0200\n"
+"Last-Translator: Luca Fabbri <keul@redturtle.it>\n"
+"Language-Team: RedTurtle Technology <sviluppoplone@redturtle.it>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"Language-Code: it\n"
+"Language-Name: Italian\n"
+"Preferred-Encodings: utf-8 latin1\n"
+"Domain: plone.app.changeownership\n"
+"X-Is-Fallback-For: it-ch it-it\n"
+
+msgid "Add a new form in your control panel to help you change ownership of contents"
+msgstr "Aggiunge un nuovo modulo nel pannello di controllo per aiutare nel cambio di proprietario dei contenuti"
+
+#: ./changeowner.pt:21
+#: ./profiles/default/controlpanel.xml
+msgid "Change Ownership"
+msgstr "Ownership ändern"
+
+#: ./changeowner.pt:85
+msgid "Change the modification date"
+msgstr "Modifikationsdatum ändern"
+
+#: ./changeowner.pt:77
+msgid "Exclude members folder"
+msgstr "Member Ordner ausschliessen"
+
+#: ./change_owner.py:18
+msgid "Objects updated"
+msgstr "Artikel aktualisiert"
+
+#: ./changeowner.pt:29
+msgid "Path filter"
+msgstr "Pfadfilter"
+
+#: ./changeowner.pt:93
+msgid "Perform as Dry Run"
+msgstr "Simulationsmodus ausführen"
+
+#: ./changeowner.pt:61
+msgid "Remove old owners from the creators list"
+msgstr "Bestehende Owner von der Liste der Ersteller löschen"
+
+#: ./changeowner.pt:69
+msgid "Remove the 'owner role' for the old owners"
+msgstr "Die 'Owner Rolle' für die bestehenden Owner löschen"
+
+#: ./changeowner.pt:48
+msgid "The new owner:"
+msgstr "Die neuen Owner:"
+
+#: ./changeowner.pt:38
+msgid "The old owners:"
+msgstr "Die bestehenden Owner:"
+
+#: ./changeowner.pt:23
+msgid "This form will help you to pass ownership of objects owned by old users to a new user."
+msgstr "Dieses Formular hilft die Ownership von Artikeln auf neue Nutzer zu übertragen"
+
+#: ./change_owner.py:17
+msgid "You have to select a new owner."
+msgstr "Sie müssen einen neuen Owner auswählen"
+
+#: ./change_owner.py:16
+msgid "You have to select one or more from the old owners."
+msgstr "Sie müssen einen oder mehrere der bestehenden Owner auswählen"
+
+#. Default: "Insert an absolute path starting from the portal root (for example: \"/events\"). Only contents inside this subtree will be touched."
+#: ./changeowner.pt:30
+msgid "path_help"
+msgstr "Wählen Sie einen absoluten Pfad aus, der vom Portal beginnt (zum Beispiel: \"/events\"). Nur Artikel, die sich innerhalb dieses Baumes befinden werden aktualisiert."
+

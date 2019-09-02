@@ -1,7 +1,7 @@
 language: python
 sudo: false
 python:
-  - 2.7.9
+  - 2.7.16
 cache:
   directories:
     - eggs
@@ -9,6 +9,7 @@ env:
   - PLONE_VERSION=4.3
   - PLONE_VERSION=5.0
   - PLONE_VERSION=5.1
+  - PLONE_VERSION=5.2
 install:
   - pip install -r requirements.txt
   - python --version

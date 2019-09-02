@@ -70,8 +70,7 @@ class ChangeOwner(BrowserView):
                 d['selected'] = 0
             authors.append(d)
 
-        authors.sort(lambda a, b: cmp(str(a['name']).lower(), str(b['name']).lower()))
-        return authors
+        return sorted(authors, key=lambda x: str(x['name']).lower())
 
     @memoize
     def list_members(self):
@@ -98,8 +97,7 @@ class ChangeOwner(BrowserView):
                 d['selected'] = 0
             members.append(d)
 
-        members.sort(lambda a, b: cmp(str(a['name']).lower(), str(b['name']).lower()))
-        return members
+        return sorted(members, key=lambda x: str(x['name']).lower())
 
     def change_owner(self):
         """Main method"""
@@ -176,7 +174,7 @@ class ChangeOwner(BrowserView):
         if user is None:
             user = self.membership.getMemberById(new_owner)
             if user is None:
-                raise KeyError, 'Only retrievable users in this site can be made owners.'
+                raise KeyError('Only retrievable users in this site can be made owners.')
 
         obj.changeOwnership(user)
 

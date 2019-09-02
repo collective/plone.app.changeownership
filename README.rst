@@ -23,7 +23,7 @@ Install
 
 The addon is installed via your Plone buildout.
 
- * Add ``plone.app.changeownership`` to the list of eggs to install, e.g.:
+* Add ``plone.app.changeownership`` to the list of eggs to install, e.g.: ::
 
     [buildout]
     ...
@@ -31,7 +31,7 @@ The addon is installed via your Plone buildout.
         ...
         plone.app.changeownership
 
-  * Re-run buildout, e.g. with:
+* Re-run buildout, e.g. with: ::
 
     $ ./bin/buildout
 

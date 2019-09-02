@@ -7,6 +7,9 @@ Changelog
 - Plone 5 compatibility
   [tomgross]
 
+- Python 3 compatibility
+  [ajung]
+
 - German translation
   [tomgross]
 

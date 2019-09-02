@@ -1,4 +1,4 @@
-include *.rst *.txt *.cfg
+include *.rst *.txt *.cfg LICENSE*
 
 recursive-include docs *
 recursive-include plone *

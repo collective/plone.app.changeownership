@@ -1,7 +1,7 @@
 Changelog
 =========
 
-0.6 (unreleased)
+1.0 (2019-09-02)
 ----------------
 
 - Plone 5 compatibility

@@ -5,11 +5,21 @@ python:
 cache:
   directories:
     - eggs
-env:
-  - PLONE_VERSION=4.3
-  - PLONE_VERSION=5.0
-  - PLONE_VERSION=5.1
-  - PLONE_VERSION=5.2
+
+
+matrix:
+
+    - python: "2.7.16"
+      env: 
+          - PLONE_VERSION=4.3
+          - PLONE_VERSION=5.0
+          - PLONE_VERSION=5.1
+          - PLONE_VERSION=5.2
+
+    - python: "3.6"
+      env: 
+          - PLONE_VERSION=5.2
+
 install:
   - pip install -r requirements.txt
   - python --version

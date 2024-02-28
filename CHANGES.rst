@@ -1,10 +1,11 @@
 Changelog
 =========
 
-1.1 (unreleased)
+1.1 (2024-02-28)
 ----------------
 
-- Nothing changed yet.
+- Plone 6 bootstrap 5 update
+  [ewohnlich]
 
 
 1.0 (2019-09-02)

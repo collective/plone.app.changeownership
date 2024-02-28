@@ -24,7 +24,7 @@
       This form will help you to pass ownership of objects owned by old users to a new user.
   </div>
     
-  <form action="./change-owner" method="post" class="form-">
+  <form action="./change-owner" method="post">
     <div class="mb-3">
       <label for="path" i18n:translate="" class="form-label">Path filter</label>
       <input type="text" name="path" id="path" size="50" class="form-control" tal:attributes="value view/path_filter" />

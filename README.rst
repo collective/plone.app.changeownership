@@ -21,20 +21,8 @@ field.
 Install
 =======
 
-The addon is installed via your Plone buildout.
+    pip install plone.app.changeownership
 
-* Add ``plone.app.changeownership`` to the list of eggs to install, e.g.: ::
-
-    [buildout]
-    ...
-    eggs =
-        ...
-        plone.app.changeownership
-
-* Re-run buildout, e.g. with: ::
-
-    $ ./bin/buildout
-
-You have to install the package from quickinstaller or setup_tool. You will get
-a configlet in the Plone control panel named "Change Ownership".
+You have to install the package from the Add Ons page in Site Setup, or from portal_setup in the ZMI.
+You will get a configlet in the Plone control panel named "Change Ownership".
 

@@ -9,7 +9,6 @@ from zope.component import getMultiAdapter
 
 
 class ChangeOwner(BrowserView):
-
     template = ViewPageTemplateFile("changeowner.pt")
 
     need_oldowners_message = _(u"You have to select one or more from the old owners.")
@@ -24,21 +23,17 @@ class ChangeOwner(BrowserView):
     def membership(self):
         return getToolByName(self.context, 'portal_membership')
 
-    def exclude_members_folder(self):
-        """Do we have to exclude the members folder ? """
-        return self.request.form.get('exclude_members_folder', True)
-
     def dry_run(self):
         """Do we have to do a dry run ? """
         return self.request.form.get('dry_run', True)
 
     def delete_old_creators(self):
         """Do we have to delete old owners from the creators list ? """
-        return self.request.form.get('delete_old_creators', False)
+        return self.request.form.get('delete_old_creators', True)
 
     def delete_old_owners(self):
         """Do we have to delete old owners from the owners role list ? """
-        return self.request.form.get('delete_old_owners', False)
+        return self.request.form.get('delete_old_owners', True)
 
     def path_filter(self):
         """Do we have an old path?"""
@@ -107,6 +102,9 @@ class ChangeOwner(BrowserView):
         dryrun = self.request.form.get('dry_run', '')
         ret = ''
 
+        if dryrun:
+            self.objects_updated_message = _('Objects to be updated')
+
         self.status = []
         if 'submit' in self.request.form:
             if isinstance(old_owners, str):
@@ -121,7 +119,7 @@ class ChangeOwner(BrowserView):
             if self.status:
                 return self.template()
 
-            #clean up
+            # clean up
             old_owners = [c for c in old_owners if c != new_owner]
 
             members_folder = self.membership.getMembersFolder()
@@ -134,11 +132,6 @@ class ChangeOwner(BrowserView):
 
             count = 0
             for brain in self.catalog(**query):
-                if self.exclude_members_folder() and members_folder_path and \
-                   brain.getPath().startswith(members_folder_path):
-                    #we dont want to change ownership for the members folder
-                    #and its contents
-                    continue
 
                 if not dryrun:
                     obj = brain.getObject()
@@ -167,7 +160,7 @@ class ChangeOwner(BrowserView):
         """Change object ownership
         """
 
-        #1. Change object ownership
+        # 1. Change object ownership
         acl_users = getattr(self.context, 'acl_users')
         user = acl_users.getUserById(new_owner)
 
@@ -178,8 +171,7 @@ class ChangeOwner(BrowserView):
 
         obj.changeOwnership(user)
 
-
-        #2. Remove old authors if we was asked to and add the new_owner
+        # 2. Remove old authors if we was asked to and add the new_owner
         #   as primary author
         if hasattr(aq_base(obj), 'Creators'):
             creators = list(obj.Creators())
@@ -190,16 +182,15 @@ class ChangeOwner(BrowserView):
             creators = [c for c in creators if c not in old_owners]
 
         if new_owner in creators:
-        # Don't add same creator twice, but move to front
+            # Don't add same creator twice, but move to front
             del creators[creators.index(new_owner)]
 
         obj.setCreators([new_owner] + creators)
 
-
-        #3. Remove the "owner role" from the old owners if we was asked to
+        # 3. Remove the "owner role" from the old owners if we was asked to
         #   and add the new_owner as owner
         if self.delete_old_owners():
-            #remove old owners
+            # remove old owners
             owners = [o for o in obj.users_with_local_role('Owner') if o in old_owners]
             for owner in owners:
                 roles = list(obj.get_local_roles_for_userid(owner))

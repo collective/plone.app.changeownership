@@ -11,7 +11,7 @@
 	condition_expr=""
     url_expr="string:${portal_url}/@@change-owner"
     visible="True"
-	icon_expr="string:${portal_url}/group.png"
+    icon_expr="string:person"
 	i18n:attributes="title">
   <permission>plone.app.changeownership: Manage Ownership</permission>
  </configlet>

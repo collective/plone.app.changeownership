@@ -1,0 +1,17 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
+    >
+
+  <genericsetup:upgradeStep
+      title="Upgrade version 0.5"
+      description="Upgrade plone.app.changeownership to version 0.5"
+      profile="plone.app.changeownership:default"
+      source="*"
+      destination="1000"
+      handler=".upgrades.migrateTo1000"
+      sortkey="1"
+      />
+
+</configure>
+

@@ -1,0 +1,96 @@
+# Italian translation
+# keul <keul@redturtle.it>, 2011
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2026-10-26 09:35+0000\n"
+"PO-Revision-Date: 2008-11-23 18:35+0200\n"
+"Last-Translator: Luca Fabbri <keul@redturtle.it>\n"
+"Language-Team: RedTurtle Technology <sviluppoplone@redturtle.it>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"Language-Code: it\n"
+"Language-Name: Italian\n"
+"Preferred-Encodings: utf-8 latin1\n"
+"Domain: plone.app.changeownership\n"
+"X-Is-Fallback-For: it-ch it-it\n"
+
+#: plone/app/changeownership/profiles.zcml:16
+msgid "Add a new form in your control panel to help you change ownership of contents"
+msgstr "Aggiunge un nuovo modulo nel pannello di controllo per aiutare nel cambio di proprietario dei contenuti"
+
+#: plone/app/changeownership/changeowner.pt:24
+msgid "Change Ownership"
+msgstr "Ownership ändern"
+
+#: plone/app/changeownership/changeowner.pt:141
+msgid "Change the modification date"
+msgstr "Modifikationsdatum ändern"
+
+#: plone/app/changeownership/changeowner.pt:128
+msgid "Exclude members folder"
+msgstr "Member Ordner ausschliessen"
+
+#: plone/app/changeownership/changeowner.pt:19
+msgid "Info"
+msgstr ""
+
+#: plone/app/changeownership/change_owner.py:17
+msgid "Objects updated"
+msgstr "Artikel aktualisiert"
+
+#: plone/app/changeownership/changeowner.pt:38
+msgid "Path filter"
+msgstr "Pfadfilter"
+
+#: plone/app/changeownership/changeowner.pt:154
+msgid "Perform as Dry Run"
+msgstr "Simulationsmodus ausführen"
+
+#: plone/app/changeownership/changeowner.pt:102
+msgid "Remove old owners from the creators list"
+msgstr "Bestehende Owner von der Liste der Ersteller löschen"
+
+#: plone/app/changeownership/profiles.zcml:24
+msgid "Remove plone.app.changeownership"
+msgstr ""
+
+#: plone/app/changeownership/changeowner.pt:115
+msgid "Remove the 'owner role' for the old owners"
+msgstr "Die 'Owner Rolle' für die bestehenden Owner löschen"
+
+#: plone/app/changeownership/changeowner.pt:77
+msgid "The new owner:"
+msgstr "Die neuen Owner:"
+
+#: plone/app/changeownership/changeowner.pt:57
+msgid "The old owners:"
+msgstr "Die bestehenden Owner:"
+
+#: plone/app/changeownership/changeowner.pt:28
+msgid "This form will help you to pass ownership of objects owned by old users to a new user."
+msgstr "Dieses Formular hilft die Ownership von Artikeln auf neue Nutzer zu übertragen"
+
+#: plone/app/changeownership/change_owner.py:16
+msgid "You have to select a new owner."
+msgstr "Sie müssen einen neuen Owner auswählen"
+
+#: plone/app/changeownership/change_owner.py:15
+msgid "You have to select one or more from the old owners."
+msgstr "Sie müssen einen oder mehrere der bestehenden Owner auswählen"
+
+#. Default: "Insert an absolute path starting from the portal root (for example: '/events'). Only contents inside this subtree will be touched."
+#: plone/app/changeownership/changeowner.pt:41
+#, fuzzy
+msgid "path_help"
+msgstr "Wählen Sie einen absoluten Pfad aus, der vom Portal beginnt (zum Beispiel: \"/events\"). Nur Artikel, die sich innerhalb dieses Baumes befinden werden aktualisiert."
+
+#: plone/app/changeownership/profiles.zcml:16
+msgid "plone.app.changeownership"
+msgstr ""
+
+#: plone/app/changeownership/profiles.zcml:24
+msgid "plone.app.changeownership: uninstall"
+msgstr ""

@@ -1,0 +1,95 @@
+#--- PLEASE EDIT THE LINES BELOW CORRECTLY ---
+#SOME DESCRIPTIVE TITLE.
+#FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2026-10-26 09:35+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"Language-Code: en\n"
+"Language-Name: English\n"
+"Preferred-Encodings: utf-8 latin1\n"
+"Domain: plone.app.changeownership\n"
+
+#: plone/app/changeownership/profiles.zcml:16
+msgid "Add a new form in your control panel to help you change ownership of contents"
+msgstr ""
+
+#: plone/app/changeownership/changeowner.pt:24
+msgid "Change Ownership"
+msgstr ""
+
+#: plone/app/changeownership/changeowner.pt:141
+msgid "Change the modification date"
+msgstr ""
+
+#: plone/app/changeownership/changeowner.pt:128
+msgid "Exclude members folder"
+msgstr ""
+
+#: plone/app/changeownership/changeowner.pt:19
+msgid "Info"
+msgstr ""
+
+#: plone/app/changeownership/change_owner.py:17
+msgid "Objects updated"
+msgstr ""
+
+#: plone/app/changeownership/changeowner.pt:38
+msgid "Path filter"
+msgstr ""
+
+#: plone/app/changeownership/changeowner.pt:154
+msgid "Perform as Dry Run"
+msgstr ""
+
+#: plone/app/changeownership/changeowner.pt:102
+msgid "Remove old owners from the creators list"
+msgstr ""
+
+#: plone/app/changeownership/profiles.zcml:24
+msgid "Remove plone.app.changeownership"
+msgstr ""
+
+#: plone/app/changeownership/changeowner.pt:115
+msgid "Remove the 'owner role' for the old owners"
+msgstr ""
+
+#: plone/app/changeownership/changeowner.pt:77
+msgid "The new owner:"
+msgstr ""
+
+#: plone/app/changeownership/changeowner.pt:57
+msgid "The old owners:"
+msgstr ""
+
+#: plone/app/changeownership/changeowner.pt:28
+msgid "This form will help you to pass ownership of objects owned by old users to a new user."
+msgstr ""
+
+#: plone/app/changeownership/change_owner.py:16
+msgid "You have to select a new owner."
+msgstr ""
+
+#: plone/app/changeownership/change_owner.py:15
+msgid "You have to select one or more from the old owners."
+msgstr ""
+
+#. Default: "Insert an absolute path starting from the portal root (for example: '/events'). Only contents inside this subtree will be touched."
+#: plone/app/changeownership/changeowner.pt:41
+msgid "path_help"
+msgstr ""
+
+#: plone/app/changeownership/profiles.zcml:16
+msgid "plone.app.changeownership"
+msgstr ""
+
+#: plone/app/changeownership/profiles.zcml:24
+msgid "plone.app.changeownership: uninstall"
+msgstr ""

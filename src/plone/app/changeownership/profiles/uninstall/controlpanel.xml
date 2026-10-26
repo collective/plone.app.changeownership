@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<object xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+        i18n_domain="plone.app.changeownership"
+        name="portal_controlpanel"
+>
+
+  <configlet action_id="change_ownership"
+             appId="plone.app.changeownership"
+             category="Products"
+             remove="True"
+             title="Change Ownership"
+  />
+
+</object>

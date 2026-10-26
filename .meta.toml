@@ -1,0 +1,24 @@
+# Generated from:
+# https://github.com/plone/meta/tree/2.x/src/plone/meta/default
+# See the inline comments on how to expand/tweak this configuration file
+[meta]
+template = "default"
+commit-id = "2.12.0"
+
+
+[gitignore]
+extra_lines = """
+.venv
+"""
+
+
+[pyproject]
+dependencies_ignores = "['zest.pocompile','zestreleaser.towncrier', 'zest.releaser','zope.testrunner',]"
+
+
+[tox]
+test_matrix = { "6.2" = ["3.11", "3.12", "3.13", "3.14"] }
+test_environment_variables = """
+    zope_i18n_compile_mo_files=True
+    UV_SYSTEM_CERTS=True
+"""

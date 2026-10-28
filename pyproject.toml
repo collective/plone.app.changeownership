@@ -24,6 +24,7 @@ classifiers = [
     "Programming Language :: Python :: 3.12",
     "Programming Language :: Python :: 3.13",
     "Programming Language :: Python :: 3.14",
+    "Programming Language :: Python :: 3.15",
 ]
 license = "GPL-2.0-only"
 dynamic = ["readme"]
@@ -36,12 +37,17 @@ dependencies = [
   "Products.CMFCore",
   "Products.CMFPlone",
   "Products.GenericSetup",
+  "plone.api",
+  "plone.app.registry",
+  "plone.autoform",
   "plone.base",
-  "plone.memoize",
+  "plone.dexterity",
   "zope.component",
   "zope.i18nmessageid",
   "zope.interface",
   "Zope",
+  "z3c.form",
+  "z3c.relationfield",
 ]
 keywords = ["plone", "change", "ownership"]
 

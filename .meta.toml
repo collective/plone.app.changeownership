@@ -17,8 +17,15 @@ dependencies_ignores = "['zest.pocompile','zestreleaser.towncrier', 'zest.releas
 
 
 [tox]
-test_matrix = { "6.2" = ["3.11", "3.12", "3.13", "3.14"] }
+test_matrix = { "6.2" = ["3.11", "3.12", "3.13", "3.14", "3.15"] }
 test_environment_variables = """
     zope_i18n_compile_mo_files=True
     UV_SYSTEM_CERTS=True
+"""
+extra_lines = """
+[coverage:run]
+omit =
+    */tests/*
+    */upgrades/*
+    */locales/*
 """

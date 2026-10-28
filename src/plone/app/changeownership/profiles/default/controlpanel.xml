@@ -10,7 +10,7 @@
              condition_expr=""
              icon_expr="string:person"
              title="Change Ownership"
-             url_expr="string:${portal_url}/@@change-owner"
+             url_expr="string:${portal_url}/@@change-ownership-controlpanel"
              visible="True"
              i18n:attributes="title"
   >

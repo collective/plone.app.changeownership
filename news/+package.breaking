@@ -1,2 +1,4 @@
 make package Plone 6.2 ready
-switch to PEP 420 native namespace  @1letter
+switch to PEP 420 native namespace
+move form to z3c form controlpanel
+remove `exclude_members_folder` option @1letter

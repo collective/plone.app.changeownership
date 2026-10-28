@@ -74,5 +74,13 @@ uvx --with tox-uv tox -r -e test
 ## Translate content
 
 ```
-uvx i18ndude rebuild-pot --pot ./src/plone/app/changeownership/locales/plone.app.changeownership.pot --create plone.app.changeownership ./src/plone/app/changeownership && uvx i18ndude sync --pot ./src/plone/app/changeownership/locales/plone.app.changeownership.pot ./src/plone/app/changeownership/locales/*/LC_MESSAGES/plone.app.changeownership.po
+uvx i18ndude rebuild-pot --pot ./src/plone/app/changeownership/locales/plone.app.changeownership.pot --create plone.app.changeownership ./src/plone/app/changeownership
+uvx i18ndude sync --pot ./src/plone/app/changeownership/locales/plone.app.changeownership.pot ./src/plone/app/changeownership/locales/*/LC_MESSAGES/plone.app.changeownership.po
+```
+
+## start a local instance
+
+```
+uvx cookiecutter -f --no-input --config-file instance.yaml gh:plone/cookiecutter-zope-instance
+runwsgi -v instance/etc/zope.ini
 ```

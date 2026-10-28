@@ -1,0 +1,90 @@
+# Italian translation
+# keul <keul@redturtle.it>, 2011
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2026-10-28 08:02+0000\n"
+"PO-Revision-Date: 2008-11-23 18:35+0200\n"
+"Last-Translator: Luca Fabbri <keul@redturtle.it>\n"
+"Language-Team: RedTurtle Technology <sviluppoplone@redturtle.it>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"Language-Code: it\n"
+"Language-Name: Italian\n"
+"Preferred-Encodings: utf-8 latin1\n"
+"Domain: plone.app.changeownership\n"
+"X-Is-Fallback-For: it-ch it-it\n"
+
+#: plone/app/changeownership/profiles.zcml:16
+msgid "Add a new form in your control panel to help you change ownership of contents"
+msgstr "Controlpanel mit dem Sie die Eigentumsrechte an Inhalten ändern können"
+
+#: plone/app/changeownership/controlpanel/controlpanel.py:25
+msgid "Apply"
+msgstr "Anwenden"
+
+#: plone/app/changeownership/controlpanel/controlpanel.py:18
+msgid "Change Ownership"
+msgstr "Ownership ändern"
+
+#: plone/app/changeownership/interfaces.py:55
+msgid "Change the modification date"
+msgstr "Modifikationsdatum ändern"
+
+#: plone/app/changeownership/controlpanel/controlpanel.py:76
+msgid "No action is performed in dry-run mode"
+msgstr "Im Testmodus werden keine Aktionen ausgeführt"
+
+#: plone/app/changeownership/controlpanel/controlpanel.py:23
+msgid "Objects updated"
+msgstr "Artikel aktualisiert"
+
+#: plone/app/changeownership/interfaces.py:61
+msgid "Perform as Dry Run"
+msgstr "Simulationsmodus ausführen"
+
+#: plone/app/changeownership/interfaces.py:19
+msgid "Please select a target."
+msgstr "Bitte ein Ziel auswählen"
+
+#: plone/app/changeownership/interfaces.py:43
+msgid "Remove old owners from the creators list"
+msgstr "Bestehende Owner von der Liste der Ersteller löschen"
+
+#: plone/app/changeownership/profiles.zcml:24
+msgid "Remove plone.app.changeownership"
+msgstr "plone.app.changeownership entfernen"
+
+#: plone/app/changeownership/interfaces.py:49
+msgid "Remove the 'owner role' for the old owners"
+msgstr "Die 'Owner Rolle' für die bestehenden Owner löschen"
+
+#: plone/app/changeownership/interfaces.py:18
+msgid "Target"
+msgstr "Ziel"
+
+#: plone/app/changeownership/interfaces.py:34
+msgid "The new owner:"
+msgstr "Die neuen Owner:"
+
+#: plone/app/changeownership/interfaces.py:25
+msgid "The old owners:"
+msgstr "Die bestehenden Owner:"
+
+#: plone/app/changeownership/controlpanel/controlpanel.py:22
+msgid "You have to select a new owner."
+msgstr "Sie müssen einen neuen Owner auswählen"
+
+#: plone/app/changeownership/controlpanel/controlpanel.py:21
+msgid "You have to select one or more from the old owners."
+msgstr "Sie müssen einen oder mehrere der bestehenden Owner auswählen"
+
+#: plone/app/changeownership/profiles.zcml:16
+msgid "plone.app.changeownership"
+msgstr "plone.app.changeownership"
+
+#: plone/app/changeownership/profiles.zcml:24
+msgid "plone.app.changeownership: uninstall"
+msgstr "plone.app.changeownership: deinstallieren"

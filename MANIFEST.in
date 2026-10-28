@@ -1,9 +1,24 @@
-include *.rst *.txt *.cfg LICENSE*
+graft src/plone
+global-exclude *.pyc
 
-recursive-include docs *
-recursive-include plone *
+include pyproject.toml
+include CHANGES.md
+include CONTRIBUTORS.md
+include docs/LICENSE.GPL
+include docs/LICENSE.txt
 
-global-exclude *.pyc *.pyo
-global-include *.mo
-global-exclude .project
-global-exclude .pydevproject
+exclude *.coveragerc
+exclude *.testing
+exclude *.development
+exclude tox.ini
+exclude *.txt
+exclude .gitlab-ci.yml
+exclude news
+exclude .env
+exclude instance.yaml
+
+recursive-exclude scss *
+recursive-exclude sass *
+recursive-exclude jinja *
+recursive-exclude resources *
+recursive-exclude news *

@@ -1,0 +1,14 @@
+default_context:
+  initial_user_name: "admin"
+  initial_user_password: "admin"
+  wsgi_listen: "localhost:8080"
+  debug_mode: true
+  verbose_security: true
+  zcml_package_includes: "plone.app.changeownership"
+  db_storage: "direct"
+  db_blob_location: "{{ cookiecutter.location_clienthome }}/blobs"
+
+  environment: {
+    "zope_i18n_compile_mo_files": true,
+    "TZ": "Europe/Berlin"
+  }

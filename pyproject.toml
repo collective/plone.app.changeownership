@@ -35,7 +35,6 @@ authors = [
 dependencies = [
   "Acquisition",
   "Products.CMFCore",
-  "Products.CMFPlone",
   "Products.GenericSetup",
   "plone.api",
   "plone.app.registry",

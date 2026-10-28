@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: plone.app.changeownership\n"
-"POT-Creation-Date: 2026-10-26 09:35+0000\n"
+"POT-Creation-Date: 2026-10-28 08:02+0000\n"
 "PO-Revision-Date: 2011-07-20 14:29+0800\n"
 "Last-Translator: Jian Aijun <jianaijun@gmail.com>\n"
 "Language-Team: UGent Portaalteam <portaal@ugent.be>\n"
@@ -21,35 +21,35 @@ msgstr ""
 msgid "Add a new form in your control panel to help you change ownership of contents"
 msgstr ""
 
-#: plone/app/changeownership/changeowner.pt:24
+#: plone/app/changeownership/controlpanel/controlpanel.py:25
+msgid "Apply"
+msgstr ""
+
+#: plone/app/changeownership/controlpanel/controlpanel.py:18
 msgid "Change Ownership"
 msgstr "变更改所有权"
 
-#: plone/app/changeownership/changeowner.pt:141
+#: plone/app/changeownership/interfaces.py:55
 msgid "Change the modification date"
 msgstr ""
 
-#: plone/app/changeownership/changeowner.pt:128
-msgid "Exclude members folder"
-msgstr "排除 成员文件夹"
-
-#: plone/app/changeownership/changeowner.pt:19
-msgid "Info"
+#: plone/app/changeownership/controlpanel/controlpanel.py:76
+msgid "No action is performed in dry-run mode"
 msgstr ""
 
-#: plone/app/changeownership/change_owner.py:17
+#: plone/app/changeownership/controlpanel/controlpanel.py:23
 msgid "Objects updated"
 msgstr "对象已更新"
 
-#: plone/app/changeownership/changeowner.pt:38
-msgid "Path filter"
-msgstr "路径筛选器"
-
-#: plone/app/changeownership/changeowner.pt:154
+#: plone/app/changeownership/interfaces.py:61
 msgid "Perform as Dry Run"
 msgstr "模拟执行"
 
-#: plone/app/changeownership/changeowner.pt:102
+#: plone/app/changeownership/interfaces.py:19
+msgid "Please select a target."
+msgstr ""
+
+#: plone/app/changeownership/interfaces.py:43
 msgid "Remove old owners from the creators list"
 msgstr "从创建者名单中删除老的所有者"
 
@@ -57,34 +57,29 @@ msgstr "从创建者名单中删除老的所有者"
 msgid "Remove plone.app.changeownership"
 msgstr ""
 
-#: plone/app/changeownership/changeowner.pt:115
+#: plone/app/changeownership/interfaces.py:49
 msgid "Remove the 'owner role' for the old owners"
 msgstr "移除 老的所有者的 '所有者角色' "
 
-#: plone/app/changeownership/changeowner.pt:77
+#: plone/app/changeownership/interfaces.py:18
+msgid "Target"
+msgstr ""
+
+#: plone/app/changeownership/interfaces.py:34
 msgid "The new owner:"
 msgstr "新的所有者:"
 
-#: plone/app/changeownership/changeowner.pt:57
+#: plone/app/changeownership/interfaces.py:25
 msgid "The old owners:"
 msgstr "老的所有者:"
 
-#: plone/app/changeownership/changeowner.pt:28
-msgid "This form will help you to pass ownership of objects owned by old users to a new user."
-msgstr "这个表单将帮助您变更对象的所有权，从老用户到一个新的用户。"
-
-#: plone/app/changeownership/change_owner.py:16
+#: plone/app/changeownership/controlpanel/controlpanel.py:22
 msgid "You have to select a new owner."
 msgstr "你必须选择一个新的所有者。"
 
-#: plone/app/changeownership/change_owner.py:15
+#: plone/app/changeownership/controlpanel/controlpanel.py:21
 msgid "You have to select one or more from the old owners."
 msgstr "你必须选择一个或多个的老的所有者。"
-
-#. Default: "Insert an absolute path starting from the portal root (for example: '/events'). Only contents inside this subtree will be touched."
-#: plone/app/changeownership/changeowner.pt:41
-msgid "path_help"
-msgstr ""
 
 #: plone/app/changeownership/profiles.zcml:16
 msgid "plone.app.changeownership"

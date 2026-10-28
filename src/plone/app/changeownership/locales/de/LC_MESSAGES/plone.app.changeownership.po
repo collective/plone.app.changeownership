@@ -3,7 +3,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2026-10-26 09:35+0000\n"
+"POT-Creation-Date: 2026-10-28 08:02+0000\n"
 "PO-Revision-Date: 2008-11-23 18:35+0200\n"
 "Last-Translator: Luca Fabbri <keul@redturtle.it>\n"
 "Language-Team: RedTurtle Technology <sviluppoplone@redturtle.it>\n"
@@ -19,78 +19,72 @@ msgstr ""
 
 #: plone/app/changeownership/profiles.zcml:16
 msgid "Add a new form in your control panel to help you change ownership of contents"
-msgstr "Aggiunge un nuovo modulo nel pannello di controllo per aiutare nel cambio di proprietario dei contenuti"
+msgstr "Controlpanel mit dem Sie die Eigentumsrechte an Inhalten ändern können"
 
-#: plone/app/changeownership/changeowner.pt:24
+#: plone/app/changeownership/controlpanel/controlpanel.py:25
+msgid "Apply"
+msgstr "Anwenden"
+
+#: plone/app/changeownership/controlpanel/controlpanel.py:18
 msgid "Change Ownership"
 msgstr "Ownership ändern"
 
-#: plone/app/changeownership/changeowner.pt:141
+#: plone/app/changeownership/interfaces.py:55
 msgid "Change the modification date"
 msgstr "Modifikationsdatum ändern"
 
-#: plone/app/changeownership/changeowner.pt:128
-msgid "Exclude members folder"
-msgstr "Member Ordner ausschliessen"
+#: plone/app/changeownership/controlpanel/controlpanel.py:76
+msgid "No action is performed in dry-run mode"
+msgstr "Im Testmodus werden keine Aktionen ausgeführt"
 
-#: plone/app/changeownership/changeowner.pt:19
-msgid "Info"
-msgstr ""
-
-#: plone/app/changeownership/change_owner.py:17
+#: plone/app/changeownership/controlpanel/controlpanel.py:23
 msgid "Objects updated"
 msgstr "Artikel aktualisiert"
 
-#: plone/app/changeownership/changeowner.pt:38
-msgid "Path filter"
-msgstr "Pfadfilter"
-
-#: plone/app/changeownership/changeowner.pt:154
+#: plone/app/changeownership/interfaces.py:61
 msgid "Perform as Dry Run"
 msgstr "Simulationsmodus ausführen"
 
-#: plone/app/changeownership/changeowner.pt:102
+#: plone/app/changeownership/interfaces.py:19
+msgid "Please select a target."
+msgstr "Bitte ein Ziel auswählen"
+
+#: plone/app/changeownership/interfaces.py:43
 msgid "Remove old owners from the creators list"
 msgstr "Bestehende Owner von der Liste der Ersteller löschen"
 
 #: plone/app/changeownership/profiles.zcml:24
 msgid "Remove plone.app.changeownership"
-msgstr ""
+msgstr "plone.app.changeownership entfernen"
 
-#: plone/app/changeownership/changeowner.pt:115
+#: plone/app/changeownership/interfaces.py:49
 msgid "Remove the 'owner role' for the old owners"
 msgstr "Die 'Owner Rolle' für die bestehenden Owner löschen"
 
-#: plone/app/changeownership/changeowner.pt:77
+#: plone/app/changeownership/interfaces.py:18
+msgid "Target"
+msgstr "Ziel"
+
+#: plone/app/changeownership/interfaces.py:34
 msgid "The new owner:"
 msgstr "Die neuen Owner:"
 
-#: plone/app/changeownership/changeowner.pt:57
+#: plone/app/changeownership/interfaces.py:25
 msgid "The old owners:"
 msgstr "Die bestehenden Owner:"
 
-#: plone/app/changeownership/changeowner.pt:28
-msgid "This form will help you to pass ownership of objects owned by old users to a new user."
-msgstr "Dieses Formular hilft die Ownership von Artikeln auf neue Nutzer zu übertragen"
-
-#: plone/app/changeownership/change_owner.py:16
+#: plone/app/changeownership/controlpanel/controlpanel.py:22
 msgid "You have to select a new owner."
 msgstr "Sie müssen einen neuen Owner auswählen"
 
-#: plone/app/changeownership/change_owner.py:15
+#: plone/app/changeownership/controlpanel/controlpanel.py:21
 msgid "You have to select one or more from the old owners."
 msgstr "Sie müssen einen oder mehrere der bestehenden Owner auswählen"
 
-#. Default: "Insert an absolute path starting from the portal root (for example: '/events'). Only contents inside this subtree will be touched."
-#: plone/app/changeownership/changeowner.pt:41
-#, fuzzy
-msgid "path_help"
-msgstr "Wählen Sie einen absoluten Pfad aus, der vom Portal beginnt (zum Beispiel: \"/events\"). Nur Artikel, die sich innerhalb dieses Baumes befinden werden aktualisiert."
-
 #: plone/app/changeownership/profiles.zcml:16
 msgid "plone.app.changeownership"
-msgstr ""
+msgstr "plone.app.changeownership"
 
 #: plone/app/changeownership/profiles.zcml:24
 msgid "plone.app.changeownership: uninstall"
-msgstr ""
+msgstr "plone.app.changeownership: deinstallieren"

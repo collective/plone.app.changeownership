@@ -3,7 +3,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2026-10-26 09:35+0000\n"
+"POT-Creation-Date: 2026-10-28 08:02+0000\n"
 "PO-Revision-Date: 2008-11-23 18:35+0200\n"
 "Last-Translator: Luca Fabbri <keul@redturtle.it>\n"
 "Language-Team: RedTurtle Technology <sviluppoplone@redturtle.it>\n"
@@ -21,35 +21,35 @@ msgstr ""
 msgid "Add a new form in your control panel to help you change ownership of contents"
 msgstr "Aggiunge un nuovo modulo nel pannello di controllo per aiutare nel cambio di proprietario dei contenuti"
 
-#: plone/app/changeownership/changeowner.pt:24
+#: plone/app/changeownership/controlpanel/controlpanel.py:25
+msgid "Apply"
+msgstr ""
+
+#: plone/app/changeownership/controlpanel/controlpanel.py:18
 msgid "Change Ownership"
 msgstr "Cambio Proprietario"
 
-#: plone/app/changeownership/changeowner.pt:141
+#: plone/app/changeownership/interfaces.py:55
 msgid "Change the modification date"
 msgstr "Cambia la data di ultima modifica"
 
-#: plone/app/changeownership/changeowner.pt:128
-msgid "Exclude members folder"
-msgstr "Escludi cartelle utenti"
-
-#: plone/app/changeownership/changeowner.pt:19
-msgid "Info"
+#: plone/app/changeownership/controlpanel/controlpanel.py:76
+msgid "No action is performed in dry-run mode"
 msgstr ""
 
-#: plone/app/changeownership/change_owner.py:17
+#: plone/app/changeownership/controlpanel/controlpanel.py:23
 msgid "Objects updated"
 msgstr "Oggetti aggiornati"
 
-#: plone/app/changeownership/changeowner.pt:38
-msgid "Path filter"
-msgstr "Filtro sul percorso"
-
-#: plone/app/changeownership/changeowner.pt:154
+#: plone/app/changeownership/interfaces.py:61
 msgid "Perform as Dry Run"
 msgstr "Esegui simulazione"
 
-#: plone/app/changeownership/changeowner.pt:102
+#: plone/app/changeownership/interfaces.py:19
+msgid "Please select a target."
+msgstr ""
+
+#: plone/app/changeownership/interfaces.py:43
 msgid "Remove old owners from the creators list"
 msgstr "Rimuovi vecchi possessori dalla lista dei creatori"
 
@@ -57,37 +57,29 @@ msgstr "Rimuovi vecchi possessori dalla lista dei creatori"
 msgid "Remove plone.app.changeownership"
 msgstr ""
 
-#: plone/app/changeownership/changeowner.pt:115
+#: plone/app/changeownership/interfaces.py:49
 msgid "Remove the 'owner role' for the old owners"
 msgstr "Rimuovi il 'ruolo possessore' dai vecchi possessori"
 
-#: plone/app/changeownership/changeowner.pt:77
+#: plone/app/changeownership/interfaces.py:18
+msgid "Target"
+msgstr ""
+
+#: plone/app/changeownership/interfaces.py:34
 msgid "The new owner:"
 msgstr "Il nuovo possessore:"
 
-#: plone/app/changeownership/changeowner.pt:57
+#: plone/app/changeownership/interfaces.py:25
 msgid "The old owners:"
 msgstr "I vecchi possessori:"
 
-#: plone/app/changeownership/changeowner.pt:28
-msgid "This form will help you to pass ownership of objects owned by old users to a new user."
-msgstr "Questo modulo ti aiuterà a passare la proprietà di contenuti creati da vecchi utenti ad un nuovo utente"
-
-#: plone/app/changeownership/change_owner.py:16
+#: plone/app/changeownership/controlpanel/controlpanel.py:22
 msgid "You have to select a new owner."
 msgstr "Devi selezionare un nuovo utente."
 
-#: plone/app/changeownership/change_owner.py:15
+#: plone/app/changeownership/controlpanel/controlpanel.py:21
 msgid "You have to select one or more from the old owners."
 msgstr "Devi selezionare uno o più vecchi utenti."
-
-#. Default: "Insert an absolute path starting from the portal root (for example: '/events'). Only contents inside this subtree will be touched."
-#: plone/app/changeownership/changeowner.pt:41
-#, fuzzy
-msgid "path_help"
-msgstr ""
-"Inserisci un percorso assoluto a partire dalla radice del portale (per esempio: \"/eventi\").\n"
-"Saranno toccati solo i contenuti dentro a questo sotto-albero."
 
 #: plone/app/changeownership/profiles.zcml:16
 msgid "plone.app.changeownership"
